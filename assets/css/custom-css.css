@@ -1,0 +1,13 @@
+.sidebar-header {
+    background-color: #5b8b41;
+    padding: 0 12px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: #fff;
+}
+
+.spinner-dots span{
+	background-color: #5b8b41
+}
