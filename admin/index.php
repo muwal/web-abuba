@@ -1,16 +1,19 @@
 <?php  
-  require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
-  use Kreait\Firebase\Factory;
-  use Kreait\Firebase\ServiceAccount;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
+use Kreait\Firebase\Auth;
 
-  $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/../secret/training-abe86-c1169630c405.json');
+$serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/../secret/training-abe86-c1169630c405.json');
 
-  $firebase = (new Factory)
-  ->withServiceAccount($serviceAccount)
-  ->create();
+$firebase = (new Factory)
+->withServiceAccount($serviceAccount)
+->create();
 
-  $database = $firebase->getDatabase();
+$database = $firebase->getDatabase();
+$auth = $firebase->getAuth();
+
 ?>
 
 <!DOCTYPE html>
@@ -80,6 +83,13 @@
 
 
         <li class="menu-category">Settings</li>
+
+        <li class="menu-item">
+          <a class="menu-link" href="?page=outlet">
+            <span class="icon fa fa-gear"></span>
+            <span class="title">Outlet</span>
+          </a>
+        </li>
 
         <li class="menu-item">
           <a class="menu-link" href="?page=misteriguest">
@@ -370,17 +380,21 @@
 
     <div class="main-content">
       <?php 
-        $current_page = isset($_GET['page']) ? $_GET['page'] : null;
+      $current_page = isset($_GET['page']) ? $_GET['page'] : null;
 
-        switch ($current_page) {
-          case 'misteriguest':
-            include 'misteri_shopper/setup_mg.php';
-            break;
+      switch ($current_page) {
+        case 'misteriguest':
+        include 'misteri_shopper/setup_mg.php';
+        break;
 
-          case 'dashboard':
-            default:
-            include 'dashboard.php';
-        }
+        case 'outlet':
+        include 'outlet/setup_outlet.php';
+        break;
+
+        case 'dashboard':
+        default:
+        include 'dashboard.php';
+      }
       ?>
 
     </div><!--/.main-content -->

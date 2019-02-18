@@ -1,3 +1,6 @@
+<?php  
+  // $user = $auth->getUserInfo('5CzFuLaSrxUHHgKFsUJhtgz8Kxn2');
+?>
 <div class="row">
   <div class="col-md-4">
     <div class="card card-body">
