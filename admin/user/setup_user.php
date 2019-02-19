@@ -22,7 +22,7 @@
 <div class="row">
 	<div class="col-lg-6">
 		<div class="card">
-			<h5 class="card-title"><strong>New Outlet</strong></h5>
+			<h5 class="card-title"><strong>New Users</strong></h5>
 
 			
 			<form id="new_entry">
@@ -30,28 +30,49 @@
 				<div class="card-body row">
 					<div class="col-md-12">
 						<div class="form-group">
-							<label>Outlet Name</label>
-							<input type="text" id="outlet" class="form-control input-reason" placeholder="eg. Abuba Jakarta" autocomplete="off" required="">
+							<label>NIK</label>
+							<input type="number" id="nik" class="form-control input-reason" placeholder="eg. 2020202020" autocomplete="off" required="">
 						</div>
 
 						<div class="form-group">
-							<label>Search Key</label>
-							<input type="text" id="searchKey" class="form-control input-reason" maxlength="1" placeholder="eg. A, J" autocomplete="off" required="">
+							<label>Name</label>
+							<input type="text" id="name" class="form-control input-reason" placeholder="eg. Tono" autocomplete="off" required="">
 						</div>
 
 						<div class="form-group">
-							<label>Address</label>
-							<textarea id="alamat" class="form-control input-reason" autocomplete="off" required=""></textarea>
+							<label>Birth Date</label>
+							<input type="date" class="form-control" id="birth-date">
+						</div>
+
+						<div class="form-group">
+							<label>Email</label>
+							<input type="email" id="email" class="form-control input-reason" placeholder="" autocomplete="off" required="">
 						</div>
 
 						<div class="form-group">
 							<label>No. Telp</label>
-							<input type="text" id="noTelp" class="form-control input-reason" placeholder="" autocomplete="off" required="">
+							<input type="number" id="noTelp" class="form-control input-reason" placeholder="" autocomplete="off" required="">
 						</div>
 
 						<div class="form-group">
-							<label>Outlet Image</label>
-							<input type="text" id="image" class="form-control input-reason" value="assets/images/slide2.png" placeholder="Outlet Image" autocomplete="off" required="">
+							<label>Grade</label>
+							<input type="text" id="grade" class="form-control input-reason" placeholder="" autocomplete="off" required="">
+						</div>
+
+						<div class="form-group">
+							<label>PIN</label>
+							<input type="number" id="pin" class="form-control input-reason" placeholder="" autocomplete="off" required="">
+						</div>
+
+						<div class="form-group">
+							<label>Divisi</label>
+							<input type="text" id="divisi" class="form-control input-reason" placeholder="" autocomplete="off" required="">
+						</div>
+
+						<div class="form-group">
+							<label>Department</label>
+							<input type="text" id="department" class="form-control input-reason" placeholder="" autocomplete="off" required="">
+							<input type="hidden" id="todayDate" value="<?php echo date("F j, Y g:i a");?>">
 						</div>
 					</div>
 				</div>
@@ -116,35 +137,40 @@
 				$('#save').click(function() {
 
 		  			// get maxid outlet from dumper_outlet
-		  			db.collection('dumper_outlet').get().then((querySnapshot) => {
+		  			db.collection('dumper_user').get().then((querySnapshot) => {
 		  				querySnapshot.forEach((doc) => {
-		  					const myData = doc.data().max_id;
+		  					const myData = doc.data().maxid;
 
 							// save data outlet
-							db.collection('outlet').add({
-								nama_outlet: $('#outlet').val(),
-								alamat: $('#alamat').val(),
-								searchKey: $('#searchKey').val(),
-								image: $('#image').val(),
-								telp: $('#noTelp').val(),
+							db.collection('user').add({
+								birthday: $('#birth-date').val(),
+								created_at: $('#todayDate').val(),
+								department: $('#department').val(),
+								divisi: $('#divisi').val(),
+								email: $('#email').val(),
+								grade: $('#grade').val(),
 								id: myData + 1,
+								nama: $('#name').val(),
+								nik: $('#nik').val(),
+								pin: $('#pin').val(),
+								telp: $('#noTelp').val(),
 							}).then(function(docRef) {
 								console.log('Document written with ID: ', docRef.id);
 							}).catch(function(error) {
 								console.log('Error adding document: ', error);
 							});
 
-							// update max_id -> dumper_outlet
-							db.collection('dumper_outlet').doc(doc.ref.id).update({
-								max_id: myData + 1,
+							// update maxid -> dumper_outlet
+							db.collection('dumper_user').doc(doc.ref.id).update({
+								maxid: myData + 1,
 							}).then(function() {
 								console.log('Document successfully updated!');
 								alert('Data successfully added');
-								window.location.href = '?page=outlet';
+								window.location.href = '?page=users';
 							}).catch(function(error) {
 								console.log('Error updating document: ', error);
 								alert('Error');
-								window.location.href = '?page=outlet';
+								window.location.href = '?page=users';
 							});
 						});
 		  			});

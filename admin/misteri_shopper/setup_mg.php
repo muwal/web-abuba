@@ -73,7 +73,7 @@
 	var jawaban_bantu_parking_kedua = '';
 	var jawaban_real_parking = [];
 
-	counter = 0;
+	counter = 1;
 	$(function(id)
 	{
 
@@ -100,7 +100,7 @@
 			
 			e.preventDefault();
 
-			/*if (counter < 2) {*/
+			if (counter < 15) {
 				/*GREETING*/
 
 				// pertanyaan_greeting.push($(this).closest('.question-greeting').find('.pertanyaan-greeting').last().val());
@@ -133,11 +133,11 @@
 
 
 				$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-greeting')
-				/*counter++;
+				counter++;
 			}else{
 				$(this).attr('disabled', 'disabled');
-				window.alert('Maximal 3 Pertanyaan')
-			}*/
+				window.alert('Maximal 15 Pertanyaan')
+			}
 
 		}).on('click', '.delete-question', function(e){
 
@@ -160,26 +160,32 @@
 			// jawaban_bantu_seating = [];
 			// jawaban_bantu_seating_kedua = '';
 
-			$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
+			if (counter < 15) {
+				$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
 
-			var last_question = $(this).closest('.questions').find('.question').last()
-			var points = last_question.find('.point')
+				var last_question = $(this).closest('.questions').find('.question').last()
+				var points = last_question.find('.point')
 
-			last_question.find('.input-question').val('')
-			last_question.find('.input-point').val('')
-			last_question.find('.input-bobot').val('')
+				last_question.find('.input-question').val('')
+				last_question.find('.input-point').val('')
+				last_question.find('.input-bobot').val('')
 
-			points.each(function(){
-				var except_last_reason = $(this).find('.reason:not(:last)')
-				var reasons = $(this).find('.reason')
-				if(reasons.length > 1){
-					except_last_reason.remove()
-				}
-			})
-			
+				points.each(function(){
+					var except_last_reason = $(this).find('.reason:not(:last)')
+					var reasons = $(this).find('.reason')
+					if(reasons.length > 1){
+						except_last_reason.remove()
+					}
+				})
 
 
-			$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-seating')
+
+				$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-seating')
+				counter++
+			}else{
+				$(this).attr('disabled', 'disabled');
+				window.alert('Maximal 15 Pertanyaan')
+			}
 
 		}).on('click', '.delete-question', function(e){
 
@@ -201,27 +207,32 @@
 			// jawaban_real_takingorder.push(jawaban_bantu_takingorder_kedua);
 			// jawaban_bantu_takingorder = [];
 			// jawaban_bantu_takingorder_kedua = '';
+			if (counter < 15) {
+				$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
 
-			$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
+				var last_question = $(this).closest('.questions').find('.question').last()
+				var points = last_question.find('.point')
 
-			var last_question = $(this).closest('.questions').find('.question').last()
-			var points = last_question.find('.point')
+				last_question.find('.input-question').val('')
+				last_question.find('.input-point').val('')
+				last_question.find('.input-bobot').val('')
 
-			last_question.find('.input-question').val('')
-			last_question.find('.input-point').val('')
-			last_question.find('.input-bobot').val('')
-
-			points.each(function(){
-				var except_last_reason = $(this).find('.reason:not(:last)')
-				var reasons = $(this).find('.reason')
-				if(reasons.length > 1){
-					except_last_reason.remove()
-				}
-			})
-			
+				points.each(function(){
+					var except_last_reason = $(this).find('.reason:not(:last)')
+					var reasons = $(this).find('.reason')
+					if(reasons.length > 1){
+						except_last_reason.remove()
+					}
+				})
+				
 
 
-			$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-takingorder')
+				$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-takingorder')
+				counter++
+			}else{
+				$(this).attr('disabled', 'disabled');
+				window.alert('Maximal 15 Pertanyaan')
+			}
 
 		}).on('click', '.delete-question', function(e){
 
@@ -243,27 +254,32 @@
 			// jawaban_real_servingproduct.push(jawaban_bantu_servingproduct_kedua);
 			// jawaban_bantu_servingproduct = [];
 			// jawaban_bantu_servingproduct_kedua = '';
+			if (counter < 15) {
+				$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
 
-			$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
+				var last_question = $(this).closest('.questions').find('.question').last()
+				var points = last_question.find('.point')
 
-			var last_question = $(this).closest('.questions').find('.question').last()
-			var points = last_question.find('.point')
+				last_question.find('.input-question').val('')
+				last_question.find('.input-point').val('')
+				last_question.find('.input-bobot').val('')
 
-			last_question.find('.input-question').val('')
-			last_question.find('.input-point').val('')
-			last_question.find('.input-bobot').val('')
-
-			points.each(function(){
-				var except_last_reason = $(this).find('.reason:not(:last)')
-				var reasons = $(this).find('.reason')
-				if(reasons.length > 1){
-					except_last_reason.remove()
-				}
-			})
-			
+				points.each(function(){
+					var except_last_reason = $(this).find('.reason:not(:last)')
+					var reasons = $(this).find('.reason')
+					if(reasons.length > 1){
+						except_last_reason.remove()
+					}
+				})
+				
 
 
-			$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-servingproduct')
+				$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-servingproduct')
+				counter++
+			}else{
+				$(this).attr('disabled', 'disabled');
+				window.alert('Maximal 15 Pertanyaan')
+			}
 
 		}).on('click', '.delete-question', function(e){
 
@@ -274,8 +290,8 @@
 		}).on('click', '.add-question-complaint', function(e){
 			
 			e.preventDefault();
-			
-			/*complaint*/
+			if (counter < 15) {
+				/*complaint*/
 			/*pertanyaan_complaint.push($(this).closest('.question-complaint').find('.pertanyaan-complaint').last().val());
 			bobot_complaint.push($(this).closest('.question-complaint').find('.bobot-complaint').last().val());
 			jawaban_bantu_complaint.push($(this).closest('.question-complaint').find('.nol-complaint').last().val());
@@ -306,17 +322,22 @@
 
 
 			$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-complaint')
+			counter++
+		}else{
+			$(this).attr('disabled', 'disabled');
+			window.alert('Maximal 15 Pertanyaan')
+		}
 
-		}).on('click', '.delete-question', function(e){
+	}).on('click', '.delete-question', function(e){
 
-			e.preventDefault();
+		e.preventDefault();
 
-			$(this).closest('.question').remove()
+		$(this).closest('.question').remove()
 
-		}).on('click', '.add-question-billing', function(e){
-			
-			e.preventDefault();
-			
+	}).on('click', '.add-question-billing', function(e){
+		
+		e.preventDefault();
+		if (counter < 15) {
 			/*billing*/
 			/*pertanyaan_billing.push($(this).closest('.question-billing').find('.pertanyaan-billing').last().val());
 			bobot_billing.push($(this).closest('.question-billing').find('.bobot-billing').last().val());
@@ -348,18 +369,23 @@
 
 
 			$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-billing')
+			counter++
+		}else{
+			$(this).attr('disabled', 'disabled');
+			window.alert('Maximal 15 Pertanyaan')
+		}
 
-		}).on('click', '.delete-question', function(e){
+	}).on('click', '.delete-question', function(e){
 
-			e.preventDefault();
+		e.preventDefault();
 
-			$(this).closest('.question').remove()
+		$(this).closest('.question').remove()
 
-		}).on('click', '.add-question-thanking', function(e){
-			
-			e.preventDefault();
-			
-			/*thanking*/
+	}).on('click', '.add-question-thanking', function(e){
+		
+		e.preventDefault();
+		
+		/*thanking*/
 			/*pertanyaan_thanking.push($(this).closest('.question-thanking').find('.pertanyaan-thanking').last().val());
 			bobot_thanking.push($(this).closest('.question-thanking').find('.bobot-thanking').last().val());
 			jawaban_bantu_thanking.push($(this).closest('.question-thanking').find('.nol-thanking').last().val());
@@ -369,27 +395,32 @@
 			jawaban_real_thanking.push(jawaban_bantu_thanking_kedua);
 			jawaban_bantu_thanking = [];
 			jawaban_bantu_thanking_kedua = '';*/
+			if (counter < 15) {
+				$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
 
-			$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
+				var last_question = $(this).closest('.questions').find('.question').last()
+				var points = last_question.find('.point')
 
-			var last_question = $(this).closest('.questions').find('.question').last()
-			var points = last_question.find('.point')
+				last_question.find('.input-question').val('')
+				last_question.find('.input-point').val('')
+				last_question.find('.input-bobot').val('')
 
-			last_question.find('.input-question').val('')
-			last_question.find('.input-point').val('')
-			last_question.find('.input-bobot').val('')
-
-			points.each(function(){
-				var except_last_reason = $(this).find('.reason:not(:last)')
-				var reasons = $(this).find('.reason')
-				if(reasons.length > 1){
-					except_last_reason.remove()
-				}
-			})
-			
+				points.each(function(){
+					var except_last_reason = $(this).find('.reason:not(:last)')
+					var reasons = $(this).find('.reason')
+					if(reasons.length > 1){
+						except_last_reason.remove()
+					}
+				})
+				
 
 
-			$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-thanking')
+				$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-thanking')
+				counter++
+			}else{
+				$(this).attr('disabled', 'disabled');
+				window.alert('Maximal 15 Pertanyaan')
+			}
 
 		}).on('click', '.delete-question', function(e){
 
@@ -411,27 +442,32 @@
 			jawaban_real_cleanliness.push(jawaban_bantu_cleanliness_kedua);
 			jawaban_bantu_cleanliness = [];
 			jawaban_bantu_cleanliness_kedua = '';*/
+			if (counter < 15) {
+				$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
 
-			$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
+				var last_question = $(this).closest('.questions').find('.question').last()
+				var points = last_question.find('.point')
 
-			var last_question = $(this).closest('.questions').find('.question').last()
-			var points = last_question.find('.point')
+				last_question.find('.input-question').val('')
+				last_question.find('.input-point').val('')
+				last_question.find('.input-bobot').val('')
 
-			last_question.find('.input-question').val('')
-			last_question.find('.input-point').val('')
-			last_question.find('.input-bobot').val('')
-
-			points.each(function(){
-				var except_last_reason = $(this).find('.reason:not(:last)')
-				var reasons = $(this).find('.reason')
-				if(reasons.length > 1){
-					except_last_reason.remove()
-				}
-			})
-			
+				points.each(function(){
+					var except_last_reason = $(this).find('.reason:not(:last)')
+					var reasons = $(this).find('.reason')
+					if(reasons.length > 1){
+						except_last_reason.remove()
+					}
+				})
+				
 
 
-			$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-cleanliness')
+				$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-cleanliness')
+				counter++ 
+			}else{
+				$(this).attr('disabled', 'disabled');
+				window.alert('Maximal 15 Pertanyaan')
+			}
 
 		}).on('click', '.delete-question', function(e){
 
@@ -453,27 +489,32 @@
 			jawaban_real_prebushing.push(jawaban_bantu_prebushing_kedua);
 			jawaban_bantu_prebushing = [];
 			jawaban_bantu_prebushing_kedua = '';*/
+			if (counter < 15) {
+				$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
 
-			$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
+				var last_question = $(this).closest('.questions').find('.question').last()
+				var points = last_question.find('.point')
 
-			var last_question = $(this).closest('.questions').find('.question').last()
-			var points = last_question.find('.point')
+				last_question.find('.input-question').val('')
+				last_question.find('.input-point').val('')
+				last_question.find('.input-bobot').val('')
 
-			last_question.find('.input-question').val('')
-			last_question.find('.input-point').val('')
-			last_question.find('.input-bobot').val('')
-
-			points.each(function(){
-				var except_last_reason = $(this).find('.reason:not(:last)')
-				var reasons = $(this).find('.reason')
-				if(reasons.length > 1){
-					except_last_reason.remove()
-				}
-			})
-			
+				points.each(function(){
+					var except_last_reason = $(this).find('.reason:not(:last)')
+					var reasons = $(this).find('.reason')
+					if(reasons.length > 1){
+						except_last_reason.remove()
+					}
+				})
+				
 
 
-			$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-prebushing')
+				$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-prebushing')
+				counter++
+			}else{
+				$(this).attr('disabled', 'disabled');
+				window.alert('Maximal 15 Pertanyaan')
+			}
 
 		}).on('click', '.delete-question', function(e){
 
@@ -495,27 +536,32 @@
 			jawaban_real_parking.push(jawaban_bantu_parking_kedua);
 			jawaban_bantu_parking = [];
 			jawaban_bantu_parking_kedua = '';*/
+			if (counter < 15) {
+				$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
 
-			$(this).closest('.question').clone().appendTo($(this).closest('.questions'))
+				var last_question = $(this).closest('.questions').find('.question').last()
+				var points = last_question.find('.point')
 
-			var last_question = $(this).closest('.questions').find('.question').last()
-			var points = last_question.find('.point')
+				last_question.find('.input-question').val('')
+				last_question.find('.input-point').val('')
+				last_question.find('.input-bobot').val('')
 
-			last_question.find('.input-question').val('')
-			last_question.find('.input-point').val('')
-			last_question.find('.input-bobot').val('')
-
-			points.each(function(){
-				var except_last_reason = $(this).find('.reason:not(:last)')
-				var reasons = $(this).find('.reason')
-				if(reasons.length > 1){
-					except_last_reason.remove()
-				}
-			})
-			
+				points.each(function(){
+					var except_last_reason = $(this).find('.reason:not(:last)')
+					var reasons = $(this).find('.reason')
+					if(reasons.length > 1){
+						except_last_reason.remove()
+					}
+				})
+				
 
 
-			$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-parking')
+				$(this).html('<span class="ion-ios-trash"></span>').addClass('delete-question').removeClass('add-question-parking')
+				counter++
+			}else{
+				$(this).attr('disabled', 'disabled');
+				window.alert('Maximal 15 Pertanyaan')
+			}
 
 		}).on('click', '.delete-question', function(e){
 
@@ -1036,124 +1082,124 @@
 
 											$('[href="#complaint"]').tab('show');
 										});
-									} else {
-										alert('Please login first');
-										window.location.href = '../../../index.php';
-									}
-								});
-							});
-						</script>
+} else {
+	alert('Please login first');
+	window.location.href = '../../../index.php';
+}
+});
+});
+</script>
+</div>
+
+<div class="tab-pane fade" id="complaint">
+	<div class="card-body row">
+		<div class="col-md-6 question-part" id="complaintHandling">
+			<h6 class="text-uppercase">question complaint handling</h6>
+			<hr class="hr-sm mb-2">
+
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="">Bobot / Parameter (%)</label>
+					<input type="number" class="form-control input-question parameter-complaint input-parameter" id="">
+				</div>
+			</div>
+
+			<div class="control-group" id="complaint">
+				<div class="controls">
+					<div class="questions">
+						<div class="question question-complaint">
+							<!-- question -->
+							<div class="form-row">
+								<div class="form-group col-md-10">
+									<label for="">Question</label>
+									<input type="text" class="form-control input-question pertanyaan-complaint" id="">
+								</div>
+								<div class="form-group col-md-2">
+									<label for="">Bobot</label>
+									<input type="number" class="form-control input-bobot bobot-complaint" id="">
+								</div>
+							</div>
+
+							<!-- 0 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 ">
+									<label for="">Guideline</label>
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">0</label>
+									</div>
+								</div>
+
+								<div class="form-group col-md-10 align-self-end">
+									<input type="text" class="form-control form-control-sm input-point nol-complaint" id="" value="">
+								</div>
+							</div>
+
+							<!-- 1 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 align-self-end">
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">1</label>
+									</div>
+								</div>
+
+								<div class="form-group col-md-10 ">
+									<input type="text" class="form-control form-control-sm input-point satu-complaint" id="" value="">
+								</div>
+							</div>
+
+							<!-- 2 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 align-self-end">
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">2</label>
+									</div>
+								</div>
+
+								<div class="form-group col-md-10 ">
+									<input type="text" class="form-control form-control-sm input-point dua-complaint" id="" value="">
+								</div>
+							</div>
+							<!-- add button -->
+							<div class="d-flex justify-content-center">
+								<button class="btn btn-icons btn-rounded btn-outline-info btn-add add-question-complaint">
+									<span class="ion-ios-plus-outline"></span>
+								</button>
+							</div>
+						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card-footer">
+		<div class="flexbox pull-right">
+			<button class="btn btn-secondary" type="button" id="next-complaint">Next</button> 
+			<!-- <button class="btn btn-secondary" data-wizard="prev">Back</button> -->
+		</div>
+	</div>
+	<script>
+		$(document).ready(function() {
+			firebase.auth().onAuthStateChanged(function (user) {
+				if (user) {
+					$(document).on('click', '#next-complaint', function(e) {
+						e.preventDefault();
 
-					<div class="tab-pane fade" id="complaint">
-						<div class="card-body row">
-							<div class="col-md-6 question-part" id="complaintHandling">
-								<h6 class="text-uppercase">question complaint handling</h6>
-								<hr class="hr-sm mb-2">
+						pertanyaan_complaint = [];
+						jawaban_real_complaint = [];
+						bobot_complaint = []
 
-								<div class="form-row">
-									<div class="form-group col-md-12">
-										<label for="">Bobot / Parameter (%)</label>
-										<input type="number" class="form-control input-question parameter-complaint input-parameter" id="">
-									</div>
-								</div>
-
-								<div class="control-group" id="complaint">
-									<div class="controls">
-										<div class="questions">
-											<div class="question question-complaint">
-												<!-- question -->
-												<div class="form-row">
-													<div class="form-group col-md-10">
-														<label for="">Question</label>
-														<input type="text" class="form-control input-question pertanyaan-complaint" id="">
-													</div>
-													<div class="form-group col-md-2">
-														<label for="">Bobot</label>
-														<input type="number" class="form-control input-bobot bobot-complaint" id="">
-													</div>
-												</div>
-
-												<!-- 0 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 ">
-														<label for="">Guideline</label>
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">0</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 align-self-end">
-														<input type="text" class="form-control form-control-sm input-point nol-complaint" id="" value="">
-													</div>
-												</div>
-
-												<!-- 1 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 align-self-end">
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">1</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 ">
-														<input type="text" class="form-control form-control-sm input-point satu-complaint" id="" value="">
-													</div>
-												</div>
-
-												<!-- 2 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 align-self-end">
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">2</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 ">
-														<input type="text" class="form-control form-control-sm input-point dua-complaint" id="" value="">
-													</div>
-												</div>
-												<!-- add button -->
-												<div class="d-flex justify-content-center">
-													<button class="btn btn-icons btn-rounded btn-outline-info btn-add add-question-complaint">
-														<span class="ion-ios-plus-outline"></span>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="card-footer">
-							<div class="flexbox pull-right">
-								<button class="btn btn-secondary" type="button" id="next-complaint">Next</button> 
-								<!-- <button class="btn btn-secondary" data-wizard="prev">Back</button> -->
-							</div>
-						</div>
-						<script>
-							$(document).ready(function() {
-								firebase.auth().onAuthStateChanged(function (user) {
-									if (user) {
-										$(document).on('click', '#next-complaint', function(e) {
-											e.preventDefault();
-
-											pertanyaan_complaint = [];
-											jawaban_real_complaint = [];
-											bobot_complaint = []
-
-											$('.question-part').each(function(){
-												var parameter = $(this).find('.input-parameter').val()
-												var id = $(this).attr('id')
-												$(this).find('.question').each(function(){
-													var points = []
-													var question = $(this).find('.input-question').val()
-													var bobot = $(this).find('.input-bobot').val()
+						$('.question-part').each(function(){
+							var parameter = $(this).find('.input-parameter').val()
+							var id = $(this).attr('id')
+							$(this).find('.question').each(function(){
+								var points = []
+								var question = $(this).find('.input-question').val()
+								var bobot = $(this).find('.input-bobot').val()
 												//
-													$(this).find('.input-point').each(function(){
-														var point = $(this).val()
-														points.push(point)
-													})
+												$(this).find('.input-point').each(function(){
+													var point = $(this).val()
+													points.push(point)
+												})
 													//
 													if(id == "complaintHandling"){
 														pertanyaan_complaint.push(question)
@@ -1161,7 +1207,7 @@
 														jawaban_real_complaint.push(points.join('!@#$'))
 													}
 												})
-											})	
+						})	
 
 											/*console.log(pertanyaan_complaint);
 											console.log(jawaban_real_complaint);*/
@@ -1179,201 +1225,201 @@
 
 											$('[href="#payment"]').tab('show');
 										});
-									} else {
-										alert('Please login first');
-										window.location.href = '../../../index.php';
-									}
-								});
-							});
-						</script>
+				} else {
+					alert('Please login first');
+					window.location.href = '../../../index.php';
+				}
+			});
+		});
+	</script>
+</div>
+
+<div class="tab-pane fade" id="payment">
+	<div class="card-body row">
+
+		<div class="col-md-6 question-part" id="billing-part">
+			<h6 class="text-uppercase mt-3">1. Billing</h6>
+			<hr class="hr-sm mb-2">
+
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="">Bobot / Parameter (%)</label>
+					<input type="text" class="form-control input-parameter parameter-billing" id="">
+				</div>
+			</div>
+
+			<div class="control-group" id="billing">
+				<div class="controls">
+					<div class="questions">
+						<div class="question question-billing">
+							<!-- question -->
+							<div class="form-row">
+								<div class="form-group col-md-10">
+									<label for="">Question</label>
+									<input type="text" class="form-control input-question pertanyaan-billing" id="">
+								</div>
+								<div class="form-group col-md-2">
+									<label for="">Bobot</label>
+									<input type="number" class="form-control input-bobot bobot-billing" id="">
+								</div>
+							</div>
+
+							<!-- 0 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 ">
+									<label for="">Guideline</label>
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">0</label>
+									</div>
+								</div>
+
+								<div class="form-group col-md-10 align-self-end">
+									<input type="text" class="form-control form-control-sm input-point nol-billing" id="" value="">
+								</div>
+							</div>
+
+							<!-- 1 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 align-self-end">
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">1</label>
+									</div>
+								</div>
+
+								<div class="form-group col-md-10 ">
+									<input type="text" class="form-control form-control-sm input-point satu-billing" id="" value="">
+								</div>
+							</div>
+
+							<!-- 2 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 align-self-end">
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">2</label>
+									</div>
+								</div>
+
+								<div class="form-group col-md-10 ">
+									<input type="text" class="form-control form-control-sm input-point dua-billing" id="" value="">
+								</div>
+							</div>
+							<!-- add button -->
+							<div class="d-flex justify-content-center">
+								<button class="btn btn-icons btn-rounded btn-outline-info btn-add add-question-billing">
+									<span class="ion-ios-plus-outline"></span>
+								</button>
+							</div>
+						</div>
 					</div>
+				</div>
+			</div>
+		</div>
 
-					<div class="tab-pane fade" id="payment">
-						<div class="card-body row">
+		<div class="col-md-6 question-part" id="thanking-part">
+			<h6 class="text-uppercase mt-3">2. Thanking</h6>
+			<hr class="hr-sm mb-2">
 
-							<div class="col-md-6 question-part" id="billing-part">
-								<h6 class="text-uppercase mt-3">1. Billing</h6>
-								<hr class="hr-sm mb-2">
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="">Bobot / Parameter (%)</label>
+					<input type="text" class="form-control input-parameter parameter-thanking" id="">
+				</div>
+			</div>
 
-								<div class="form-row">
-									<div class="form-group col-md-12">
-										<label for="">Bobot / Parameter (%)</label>
-										<input type="text" class="form-control input-parameter parameter-billing" id="">
-									</div>
+			<div class="control-group" id="thanking">
+				<div class="controls">
+					<div class="questions">
+						<div class="question question-thanking">
+							<!-- question -->
+							<div class="form-row">
+								<div class="form-group col-md-10">
+									<label for="">Question</label>
+									<input type="text" class="form-control input-question pertanyaan-thanking" id="">
 								</div>
-
-								<div class="control-group" id="billing">
-									<div class="controls">
-										<div class="questions">
-											<div class="question question-billing">
-												<!-- question -->
-												<div class="form-row">
-													<div class="form-group col-md-10">
-														<label for="">Question</label>
-														<input type="text" class="form-control input-question pertanyaan-billing" id="">
-													</div>
-													<div class="form-group col-md-2">
-														<label for="">Bobot</label>
-														<input type="number" class="form-control input-bobot bobot-billing" id="">
-													</div>
-												</div>
-
-												<!-- 0 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 ">
-														<label for="">Guideline</label>
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">0</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 align-self-end">
-														<input type="text" class="form-control form-control-sm input-point nol-billing" id="" value="">
-													</div>
-												</div>
-
-												<!-- 1 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 align-self-end">
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">1</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 ">
-														<input type="text" class="form-control form-control-sm input-point satu-billing" id="" value="">
-													</div>
-												</div>
-
-												<!-- 2 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 align-self-end">
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">2</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 ">
-														<input type="text" class="form-control form-control-sm input-point dua-billing" id="" value="">
-													</div>
-												</div>
-												<!-- add button -->
-												<div class="d-flex justify-content-center">
-													<button class="btn btn-icons btn-rounded btn-outline-info btn-add add-question-billing">
-														<span class="ion-ios-plus-outline"></span>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
+								<div class="form-group col-md-2">
+									<label for="">Bobot</label>
+									<input type="number" class="form-control input-bobot bobot-thanking" id="">
 								</div>
 							</div>
 
-							<div class="col-md-6 question-part" id="thanking-part">
-								<h6 class="text-uppercase mt-3">2. Thanking</h6>
-								<hr class="hr-sm mb-2">
-
-								<div class="form-row">
-									<div class="form-group col-md-12">
-										<label for="">Bobot / Parameter (%)</label>
-										<input type="text" class="form-control input-parameter parameter-thanking" id="">
+							<!-- 0 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 ">
+									<label for="">Guideline</label>
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">0</label>
 									</div>
 								</div>
 
-								<div class="control-group" id="thanking">
-									<div class="controls">
-										<div class="questions">
-											<div class="question question-thanking">
-												<!-- question -->
-												<div class="form-row">
-													<div class="form-group col-md-10">
-														<label for="">Question</label>
-														<input type="text" class="form-control input-question pertanyaan-thanking" id="">
-													</div>
-													<div class="form-group col-md-2">
-														<label for="">Bobot</label>
-														<input type="number" class="form-control input-bobot bobot-thanking" id="">
-													</div>
-												</div>
+								<div class="form-group col-md-10 align-self-end">
+									<input type="text" class="form-control form-control-sm input-point nol-thanking" id="" value="">
+								</div>
+							</div>
 
-												<!-- 0 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 ">
-														<label for="">Guideline</label>
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">0</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 align-self-end">
-														<input type="text" class="form-control form-control-sm input-point nol-thanking" id="" value="">
-													</div>
-												</div>
-
-												<!-- 1 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 align-self-end">
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">1</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 ">
-														<input type="text" class="form-control form-control-sm input-point satu-thanking" id="" value="">
-													</div>
-												</div>
-
-												<!-- 2 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 align-self-end">
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">2</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 ">
-														<input type="text" class="form-control form-control-sm input-point dua-thanking" id="" value="">
-													</div>
-												</div>
-												<!-- add button -->
-												<div class="d-flex justify-content-center">
-													<button class="btn btn-icons btn-rounded btn-outline-info btn-add add-question-thanking">
-														<span class="ion-ios-plus-outline"></span>
-													</button>
-												</div>
-											</div>
-										</div>
+							<!-- 1 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 align-self-end">
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">1</label>
 									</div>
 								</div>
+
+								<div class="form-group col-md-10 ">
+									<input type="text" class="form-control form-control-sm input-point satu-thanking" id="" value="">
+								</div>
+							</div>
+
+							<!-- 2 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 align-self-end">
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">2</label>
+									</div>
+								</div>
+
+								<div class="form-group col-md-10 ">
+									<input type="text" class="form-control form-control-sm input-point dua-thanking" id="" value="">
+								</div>
+							</div>
+							<!-- add button -->
+							<div class="d-flex justify-content-center">
+								<button class="btn btn-icons btn-rounded btn-outline-info btn-add add-question-thanking">
+									<span class="ion-ios-plus-outline"></span>
+								</button>
 							</div>
 						</div>
-						<div class="card-footer">
-							<div class="flexbox pull-right">
-								<button class="btn btn-secondary" type="button" id="next-payment">Next</button> 
-								<!-- <button class="btn btn-secondary" data-wizard="prev">Back</button> -->
-							</div>
-						</div>
-						<script>
-							$(document).ready(function() {
-								firebase.auth().onAuthStateChanged(function (user) {
-									if (user) {
-										$(document).on('click', '#next-payment', function(e) {
-											e.preventDefault();
-											pertanyaan_billing = [];
-											jawaban_real_billing = [];
-											bobot_billing = []
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card-footer">
+		<div class="flexbox pull-right">
+			<button class="btn btn-secondary" type="button" id="next-payment">Next</button> 
+			<!-- <button class="btn btn-secondary" data-wizard="prev">Back</button> -->
+		</div>
+	</div>
+	<script>
+		$(document).ready(function() {
+			firebase.auth().onAuthStateChanged(function (user) {
+				if (user) {
+					$(document).on('click', '#next-payment', function(e) {
+						e.preventDefault();
+						pertanyaan_billing = [];
+						jawaban_real_billing = [];
+						bobot_billing = []
 
-											pertanyaan_thanking = [];
-											jawaban_real_thanking = [];
-											bobot_thanking = []
+						pertanyaan_thanking = [];
+						jawaban_real_thanking = [];
+						bobot_thanking = []
 
-											$('.question-part').each(function(){
-												var parameter = $(this).find('.input-parameter').val()
-												var id = $(this).attr('id')
-												$(this).find('.question').each(function(){
-													var points = []
-													var question = $(this).find('.input-question').val()
-													var bobot = $(this).find('.input-bobot').val()
+						$('.question-part').each(function(){
+							var parameter = $(this).find('.input-parameter').val()
+							var id = $(this).attr('id')
+							$(this).find('.question').each(function(){
+								var points = []
+								var question = $(this).find('.input-question').val()
+								var bobot = $(this).find('.input-bobot').val()
 												//
 												$(this).find('.input-point').each(function(){
 													var point = $(this).val()
@@ -1390,7 +1436,7 @@
 														jawaban_real_thanking.push(points.join('!@#$'))
 													}
 												})
-											})	
+						})	
 
 											/*console.log(pertanyaan_billing);
 											console.log(jawaban_real_billing);
@@ -1421,304 +1467,304 @@
 											});
 											$('[href="#review-outlet"]').tab('show');
 										});
-									} else {
-										alert('Please login first');
-										window.location.href = '../../../index.php';
-									}
-								});
-							});
-						</script>
+				} else {
+					alert('Please login first');
+					window.location.href = '../../../index.php';
+				}
+			});
+		});
+	</script>
+</div>
+
+<div class="tab-pane fade" id="review-outlet">
+	<div class="card-body row">
+		<div class="col-md-6 question-part" id="cleanliness-part">
+			<h6 class="text-uppercase">1. Pengecekan Kebersihan</h6>
+			<hr class="hr-sm mb-2">
+
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="">Bobot / Parameter (%)</label>
+					<input type="text" class="form-control input-parameter parameter-cleanliness" id="">
+				</div>
+			</div>
+
+			<div class="control-group" id="cleanliness">
+				<div class="controls">
+					<div class="questions">
+						<div class="question question-cleanliness">
+							<!-- question -->
+							<div class="form-row">
+								<div class="form-group col-md-10">
+									<label for="">Question</label>
+									<input type="text" class="form-control input-question pertanyaan-cleanliness" id="">
+								</div>
+								<div class="form-group col-md-2">
+									<label for="">Bobot</label>
+									<input type="number" class="form-control input-bobot bobot-cleanliness" id="">
+								</div>
+							</div>
+
+							<!-- 0 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 ">
+									<label for="">Guideline</label>
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">0</label>
+									</div>
+								</div>
+
+								<div class="form-group col-md-10 align-self-end">
+									<input type="text" class="form-control form-control-sm input-point nol-cleanliness" id="" value="">
+								</div>
+							</div>
+
+							<!-- 1 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 align-self-end">
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">1</label>
+									</div>
+								</div>
+
+								<div class="form-group col-md-10 ">
+									<input type="text" class="form-control form-control-sm input-point satu-cleanliness" id="" value="">
+								</div>
+							</div>
+
+							<!-- 2 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 align-self-end">
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">2</label>
+									</div>
+								</div>
+
+								<div class="form-group col-md-10 ">
+									<input type="text" class="form-control form-control-sm input-point dua-cleanliness" id="" value="">
+								</div>
+							</div>
+							<!-- add button -->
+							<div class="d-flex justify-content-center">
+								<button class="btn btn-icons btn-rounded btn-outline-info btn-add add-question-cleanliness">
+									<span class="ion-ios-plus-outline"></span>
+								</button>
+							</div>
+						</div>
 					</div>
+				</div>
+			</div>
+		</div>
 
-					<div class="tab-pane fade" id="review-outlet">
-						<div class="card-body row">
-							<div class="col-md-6 question-part" id="cleanliness-part">
-								<h6 class="text-uppercase">1. Pengecekan Kebersihan</h6>
-								<hr class="hr-sm mb-2">
+		<div class="col-md-6 question-part" id="prebushing-part">
+			<h6 class="text-uppercase">2. Pre-Bushing</h6>
+			<hr class="hr-sm mb-2">
 
-								<div class="form-row">
-									<div class="form-group col-md-12">
-										<label for="">Bobot / Parameter (%)</label>
-										<input type="text" class="form-control input-parameter parameter-cleanliness" id="">
-									</div>
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="">Bobot / Parameter (%)</label>
+					<input type="text" class="form-control input-parameter parameter-prebushing" id="">
+				</div>
+			</div>
+
+			<div class="control-group" id="prebushing">
+				<div class="controls">
+					<div class="questions">
+						<div class="question question-prebushing">
+							<!-- question -->
+							<div class="form-row">
+								<div class="form-group col-md-10">
+									<label for="">Question</label>
+									<input type="text" class="form-control input-question pertanyaan-prebushing" id="">
 								</div>
-
-								<div class="control-group" id="cleanliness">
-									<div class="controls">
-										<div class="questions">
-											<div class="question question-cleanliness">
-												<!-- question -->
-												<div class="form-row">
-													<div class="form-group col-md-10">
-														<label for="">Question</label>
-														<input type="text" class="form-control input-question pertanyaan-cleanliness" id="">
-													</div>
-													<div class="form-group col-md-2">
-														<label for="">Bobot</label>
-														<input type="number" class="form-control input-bobot bobot-cleanliness" id="">
-													</div>
-												</div>
-
-												<!-- 0 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 ">
-														<label for="">Guideline</label>
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">0</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 align-self-end">
-														<input type="text" class="form-control form-control-sm input-point nol-cleanliness" id="" value="">
-													</div>
-												</div>
-
-												<!-- 1 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 align-self-end">
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">1</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 ">
-														<input type="text" class="form-control form-control-sm input-point satu-cleanliness" id="" value="">
-													</div>
-												</div>
-
-												<!-- 2 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 align-self-end">
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">2</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 ">
-														<input type="text" class="form-control form-control-sm input-point dua-cleanliness" id="" value="">
-													</div>
-												</div>
-												<!-- add button -->
-												<div class="d-flex justify-content-center">
-													<button class="btn btn-icons btn-rounded btn-outline-info btn-add add-question-cleanliness">
-														<span class="ion-ios-plus-outline"></span>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
+								<div class="form-group col-md-2">
+									<label for="">Bobot</label>
+									<input type="number" class="form-control input-bobot bobot-prebushing" id="">
 								</div>
 							</div>
 
-							<div class="col-md-6 question-part" id="prebushing-part">
-								<h6 class="text-uppercase">2. Pre-Bushing</h6>
-								<hr class="hr-sm mb-2">
-
-								<div class="form-row">
-									<div class="form-group col-md-12">
-										<label for="">Bobot / Parameter (%)</label>
-										<input type="text" class="form-control input-parameter parameter-prebushing" id="">
+							<!-- 0 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 ">
+									<label for="">Guideline</label>
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">0</label>
 									</div>
 								</div>
 
-								<div class="control-group" id="prebushing">
-									<div class="controls">
-										<div class="questions">
-											<div class="question question-prebushing">
-												<!-- question -->
-												<div class="form-row">
-													<div class="form-group col-md-10">
-														<label for="">Question</label>
-														<input type="text" class="form-control input-question pertanyaan-prebushing" id="">
-													</div>
-													<div class="form-group col-md-2">
-														<label for="">Bobot</label>
-														<input type="number" class="form-control input-bobot bobot-prebushing" id="">
-													</div>
-												</div>
-
-												<!-- 0 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 ">
-														<label for="">Guideline</label>
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">0</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 align-self-end">
-														<input type="text" class="form-control form-control-sm input-point nol-prebushing" id="" value="">
-													</div>
-												</div>
-
-												<!-- 1 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 align-self-end">
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">1</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 ">
-														<input type="text" class="form-control form-control-sm input-point satu-prebushing" id="" value="">
-													</div>
-												</div>
-
-												<!-- 2 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 align-self-end">
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">2</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 ">
-														<input type="text" class="form-control form-control-sm input-point dua-prebushing" id="" value="">
-													</div>
-												</div>
-												<!-- add button -->
-												<div class="d-flex justify-content-center">
-													<button class="btn btn-icons btn-rounded btn-outline-info btn-add add-question-prebushing">
-														<span class="ion-ios-plus-outline"></span>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
+								<div class="form-group col-md-10 align-self-end">
+									<input type="text" class="form-control form-control-sm input-point nol-prebushing" id="" value="">
 								</div>
 							</div>
 
-							<div class="col-md-6 question-part" id="parking-part">
-								<h6 class="text-uppercase mt-3">3. Pengecekan area parkir</h6>
-								<hr class="hr-sm mb-2">
-
-								<div class="form-row">
-									<div class="form-group col-md-12">
-										<label for="">Bobot / Parameter (%)</label>
-										<input type="text" class="form-control input-parameter parameter-parking" id="">
+							<!-- 1 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 align-self-end">
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">1</label>
 									</div>
 								</div>
 
-								<div class="control-group" id="parking">
-									<div class="controls">
-										<div class="questions">
-											<div class="question question-parking">
-												<!-- question -->
-												<div class="form-row">
-													<div class="form-group col-md-10">
-														<label for="">Question</label>
-														<input type="text" class="form-control input-question pertanyaan-parking" id="">
-													</div>
-													<div class="form-group col-md-2">
-														<label for="">Bobot</label>
-														<input type="number" class="form-control input-bobot bobot-parking" id="">
-													</div>
-												</div>
+								<div class="form-group col-md-10 ">
+									<input type="text" class="form-control form-control-sm input-point satu-prebushing" id="" value="">
+								</div>
+							</div>
 
-												<!-- 0 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 ">
-														<label for="">Guideline</label>
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">0</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 align-self-end">
-														<input type="text" class="form-control form-control-sm input-point nol-parking" id="" value="">
-													</div>
-												</div>
-
-												<!-- 1 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 align-self-end">
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">1</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 ">
-														<input type="text" class="form-control form-control-sm input-point satu-parking" id="" value="">
-													</div>
-												</div>
-
-												<!-- 2 -->
-												<div class="form-row">
-													<div class="form-group col-md-2 align-self-end">
-														<div class="">
-															<label class="control-label font-weight-bold" for="ccs-3">2</label>
-														</div>
-													</div>
-
-													<div class="form-group col-md-10 ">
-														<input type="text" class="form-control form-control-sm input-point dua-parking" id="" value="">
-													</div>
-												</div>
-												<!-- add button -->
-												<div class="d-flex justify-content-center">
-													<button class="btn btn-icons btn-rounded btn-outline-info btn-add add-question-parking">
-														<span class="ion-ios-plus-outline"></span>
-													</button>
-												</div>
-											</div>
-										</div>
+							<!-- 2 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 align-self-end">
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">2</label>
 									</div>
 								</div>
+
+								<div class="form-group col-md-10 ">
+									<input type="text" class="form-control form-control-sm input-point dua-prebushing" id="" value="">
+								</div>
+							</div>
+							<!-- add button -->
+							<div class="d-flex justify-content-center">
+								<button class="btn btn-icons btn-rounded btn-outline-info btn-add add-question-prebushing">
+									<span class="ion-ios-plus-outline"></span>
+								</button>
 							</div>
 						</div>
-						<div class="card-footer">
-							<div class="flexbox pull-right">
-								<button class="btn btn-secondary" type="button" id="next-review">Save</button> 
-								<!-- <button class="btn btn-secondary" data-wizard="prev">Back</button> -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6 question-part" id="parking-part">
+			<h6 class="text-uppercase mt-3">3. Pengecekan area parkir</h6>
+			<hr class="hr-sm mb-2">
+
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="">Bobot / Parameter (%)</label>
+					<input type="text" class="form-control input-parameter parameter-parking" id="">
+				</div>
+			</div>
+
+			<div class="control-group" id="parking">
+				<div class="controls">
+					<div class="questions">
+						<div class="question question-parking">
+							<!-- question -->
+							<div class="form-row">
+								<div class="form-group col-md-10">
+									<label for="">Question</label>
+									<input type="text" class="form-control input-question pertanyaan-parking" id="">
+								</div>
+								<div class="form-group col-md-2">
+									<label for="">Bobot</label>
+									<input type="number" class="form-control input-bobot bobot-parking" id="">
+								</div>
+							</div>
+
+							<!-- 0 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 ">
+									<label for="">Guideline</label>
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">0</label>
+									</div>
+								</div>
+
+								<div class="form-group col-md-10 align-self-end">
+									<input type="text" class="form-control form-control-sm input-point nol-parking" id="" value="">
+								</div>
+							</div>
+
+							<!-- 1 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 align-self-end">
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">1</label>
+									</div>
+								</div>
+
+								<div class="form-group col-md-10 ">
+									<input type="text" class="form-control form-control-sm input-point satu-parking" id="" value="">
+								</div>
+							</div>
+
+							<!-- 2 -->
+							<div class="form-row">
+								<div class="form-group col-md-2 align-self-end">
+									<div class="">
+										<label class="control-label font-weight-bold" for="ccs-3">2</label>
+									</div>
+								</div>
+
+								<div class="form-group col-md-10 ">
+									<input type="text" class="form-control form-control-sm input-point dua-parking" id="" value="">
+								</div>
+							</div>
+							<!-- add button -->
+							<div class="d-flex justify-content-center">
+								<button class="btn btn-icons btn-rounded btn-outline-info btn-add add-question-parking">
+									<span class="ion-ios-plus-outline"></span>
+								</button>
 							</div>
 						</div>
-						<script>
-							$(document).ready(function() {
-								firebase.auth().onAuthStateChanged(function (user) {
-									if (user) {
-										$(document).on('click', '#next-review', function(e) {
-											e.preventDefault();
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card-footer">
+		<div class="flexbox pull-right">
+			<button class="btn btn-secondary" type="button" id="next-review">Save</button> 
+			<!-- <button class="btn btn-secondary" data-wizard="prev">Back</button> -->
+		</div>
+	</div>
+	<script>
+		$(document).ready(function() {
+			firebase.auth().onAuthStateChanged(function (user) {
+				if (user) {
+					$(document).on('click', '#next-review', function(e) {
+						e.preventDefault();
 
-											pertanyaan_cleanliness = [];
-											jawaban_real_cleanliness = [];
-											bobot_cleanliness = []
+						pertanyaan_cleanliness = [];
+						jawaban_real_cleanliness = [];
+						bobot_cleanliness = []
 
-											pertanyaan_prebushing = [];
-											jawaban_real_prebushing = [];
-											bobot_prebushing = []
+						pertanyaan_prebushing = [];
+						jawaban_real_prebushing = [];
+						bobot_prebushing = []
 
-											pertanyaan_parking = [];
-											jawaban_real_parking = [];
-											bobot_parking = []
+						pertanyaan_parking = [];
+						jawaban_real_parking = [];
+						bobot_parking = []
 
-											$('.question-part').each(function(){
-												var parameter = $(this).find('.input-parameter').val()
-												var id = $(this).attr('id')
-												$(this).find('.question').each(function(){
-													var points = []
-													var question = $(this).find('.input-question').val()
-													var bobot = $(this).find('.input-bobot').val()
+						$('.question-part').each(function(){
+							var parameter = $(this).find('.input-parameter').val()
+							var id = $(this).attr('id')
+							$(this).find('.question').each(function(){
+								var points = []
+								var question = $(this).find('.input-question').val()
+								var bobot = $(this).find('.input-bobot').val()
 												//
 												$(this).find('.input-point').each(function(){
 													var point = $(this).val()
 													points.push(point)
 												})
-													//
-													if(id == "cleanliness-part"){
-														pertanyaan_cleanliness.push(question)
-														bobot_cleanliness.push(bobot)
-														jawaban_real_cleanliness.push(points.join('!@#$'))
-													}else if(id == "prebushing-part"){
-														pertanyaan_prebushing.push(question)
-														bobot_prebushing.push(bobot)
-														jawaban_real_prebushing.push(points.join('!@#$'))
-													}else if(id == "parking-part"){
-														pertanyaan_parking.push(question)
-														bobot_parking.push(bobot)
-														jawaban_real_parking.push(points.join('!@#$'))
-													}
-												})
-											})	
+								//
+								if(id == "cleanliness-part"){
+									pertanyaan_cleanliness.push(question)
+									bobot_cleanliness.push(bobot)
+									jawaban_real_cleanliness.push(points.join('!@#$'))
+								}else if(id == "prebushing-part"){
+									pertanyaan_prebushing.push(question)
+									bobot_prebushing.push(bobot)
+									jawaban_real_prebushing.push(points.join('!@#$'))
+								}else if(id == "parking-part"){
+									pertanyaan_parking.push(question)
+									bobot_parking.push(bobot)
+									jawaban_real_parking.push(points.join('!@#$'))
+								}
+							})
+						})	
 
 											/*console.log(pertanyaan_cleanliness);
 											console.log(jawaban_real_cleanliness);
@@ -1729,52 +1775,52 @@
 											console.log(pertanyaan_parking);
 											console.log(jawaban_real_parking);*/
 
-												db.collection('cleaniness1').add({
-													bobot: $('.parameter-cleanliness').val(),
-													bobotpertanyaan: bobot_cleanliness,
-													jawaban: jawaban_real_cleanliness,
-													pertanyaan: pertanyaan_cleanliness,
-												}).then(function(docRef) {
-													console.log('Document cleanliness with ID: ', docRef.id);
-												}).catch(function(error) {
-													console.log('Error adding document: ', error);
-												});
-
-												db.collection('pre-bushing1').add({
-													bobot: $('.parameter-prebushing').val(),
-													bobotpertanyaan: bobot_prebushing,
-													jawaban: jawaban_real_prebushing,
-													pertanyaan: pertanyaan_prebushing,
-												}).then(function(docRef) {
-													console.log('Document prebushing with ID: ', docRef.id);
-												}).catch(function(error) {
-													console.log('Error adding document: ', error);
-												});
-
-												db.collection('parking1').add({
-													bobot: $('.parameter-parking').val(),
-													bobotpertanyaan: bobot_parking,
-													jawaban: jawaban_real_parking,
-													pertanyaan: pertanyaan_parking,
-												}).then(function(docRef) {
-													console.log('Document parking with ID: ', docRef.id);
-												}).catch(function(error) {
-													console.log('Error adding document: ', error);
-												});
-
-												window.location.href='?page=dashboard';window.alert('Data setup berhasil dibuat');
-												
+											db.collection('cleaniness1').add({
+												bobot: $('.parameter-cleanliness').val(),
+												bobotpertanyaan: bobot_cleanliness,
+												jawaban: jawaban_real_cleanliness,
+												pertanyaan: pertanyaan_cleanliness,
+											}).then(function(docRef) {
+												console.log('Document cleanliness with ID: ', docRef.id);
+											}).catch(function(error) {
+												console.log('Error adding document: ', error);
 											});
-									} else {
-										alert('Please login first');
-										window.location.href = '../../../index.php';
-									}
-								});
-							});
-						</script>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+											db.collection('pre-bushing1').add({
+												bobot: $('.parameter-prebushing').val(),
+												bobotpertanyaan: bobot_prebushing,
+												jawaban: jawaban_real_prebushing,
+												pertanyaan: pertanyaan_prebushing,
+											}).then(function(docRef) {
+												console.log('Document prebushing with ID: ', docRef.id);
+											}).catch(function(error) {
+												console.log('Error adding document: ', error);
+											});
+
+											db.collection('parking1').add({
+												bobot: $('.parameter-parking').val(),
+												bobotpertanyaan: bobot_parking,
+												jawaban: jawaban_real_parking,
+												pertanyaan: pertanyaan_parking,
+											}).then(function(docRef) {
+												console.log('Document parking with ID: ', docRef.id);
+											}).catch(function(error) {
+												console.log('Error adding document: ', error);
+											});
+
+											window.location.href='?page=dashboard';window.alert('Data setup berhasil dibuat');
+											
+										});
+				} else {
+					alert('Please login first');
+					window.location.href = '../../../index.php';
+				}
+			});
+		});
+	</script>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>

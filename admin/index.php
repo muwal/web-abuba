@@ -98,6 +98,13 @@ $auth = $firebase->getAuth();
           </a>
         </li>
 
+        <li class="menu-item">
+          <a class="menu-link" href="?page=users">
+            <span class="icon fa fa-gear"></span>
+            <span class="title">Setup Users</span>
+          </a>
+        </li>
+
 
 
         <li class="menu-divider"></li>
@@ -389,6 +396,10 @@ $auth = $firebase->getAuth();
 
         case 'outlet':
         include 'outlet/setup_outlet.php';
+        break;
+
+        case 'users':
+        include 'user/setup_user.php';
         break;
 
         case 'dashboard':
