@@ -126,7 +126,7 @@ $database = $firebase->getDatabase();
   <script src="assets/js/app.min.js"></script>
   <script src="assets/js/script.min.js"></script>
   <script type="text/javascript" src="firebase.js"></script>
-  <script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript" src="login.js"></script>
 </body>
 </html>
 

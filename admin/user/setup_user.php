@@ -20,56 +20,57 @@
 </script>
 
 <div class="row">
-	<div class="col-lg-6">
+	<div class="col-lg-12 col-12">
 		<div class="card">
 			<h5 class="card-title"><strong>New Users</strong></h5>
 
 			
 			<form id="new_entry">
 
-				<div class="card-body row">
-					<div class="col-md-12">
-						<div class="form-group">
+				<div class="card-body">
+					<div class="form-row">
+						<div class="form-group col-4">
 							<label>NIK</label>
 							<input type="number" id="nik" class="form-control input-reason" placeholder="eg. 2020202020" autocomplete="off" required="">
 						</div>
 
-						<div class="form-group">
+						<div class="form-group col-8">
 							<label>Name</label>
 							<input type="text" id="name" class="form-control input-reason" placeholder="eg. Tono" autocomplete="off" required="">
 						</div>
 
-						<div class="form-group">
+						<div class="form-group col-3">
 							<label>Birth Date</label>
 							<input type="date" class="form-control" id="birth-date">
 						</div>
 
-						<div class="form-group">
-							<label>Email</label>
-							<input type="email" id="email" class="form-control input-reason" placeholder="" autocomplete="off" required="">
-						</div>
-
-						<div class="form-group">
+						<div class="form-group col-3">
 							<label>No. Telp</label>
 							<input type="number" id="noTelp" class="form-control input-reason" placeholder="" autocomplete="off" required="">
 						</div>
 
-						<div class="form-group">
+						<div class="form-group col-6">
+							<label>Email</label>
+							<input type="email" id="email" class="form-control input-reason" placeholder="" autocomplete="off" required="">
+						</div>
+
+
+						<div class="form-group col-3">
 							<label>Grade</label>
 							<input type="text" id="grade" class="form-control input-reason" placeholder="" autocomplete="off" required="">
 						</div>
 
-						<div class="form-group">
+						<div class="form-group col-3">
 							<label>PIN</label>
 							<input type="number" id="pin" class="form-control input-reason" placeholder="" autocomplete="off" required="">
 						</div>
 
-						<div class="form-group">
+						<div class="form-group col-3">
 							<label>Divisi</label>
 							<input type="text" id="divisi" class="form-control input-reason" placeholder="" autocomplete="off" required="">
 						</div>
 
-						<div class="form-group">
+						<div class="form-group col-3">
 							<label>Department</label>
 							<input type="text" id="department" class="form-control input-reason" placeholder="" autocomplete="off" required="">
 							<input type="hidden" id="todayDate" value="<?php echo date("F j, Y g:i a");?>">
@@ -86,45 +87,45 @@
 		</div>
 	</div>
 
-	<div class="col-md-6">
+	<div class="col-md-12 col-12">
 		<div class="card card-bordered">
-			<h4 class="card-title"><strong>Outlet Data</strong></h4>
+			<h4 class="card-title"><strong>Users Data</strong></h4>
 
-			<div class="media-list media-list-hover" data-provide="selectall">
-				<div class="media-list-body scrollable" data-provide="sortable" data-sortable-handle=".sortable-dot" style="height:344px">
+			<div class="card-body">
 
-					<script>
-						$(document).ready(function() {
-							var content = '';
-							var i;
-							firebase.auth().onAuthStateChanged(function(user) {
-								if (user) {
-									db.collection('outlet')
-									.orderBy('nama_outlet', 'asc')
-									.onSnapshot(function(querySnapshot) {
-										var outletName = [];
-										var refID = [];
-										querySnapshot.forEach(function(doc) {
-											outletName.push(doc.data().nama_outlet);
-											refID.push(doc.ref.id);
-										});
-										for (i = 0; i < outletName.length; i++) {
-											content += "<div class='media media-single'><div class='custom-control custom-control-lg flex-grow-1'><label>" + outletName[i] + "</label></div><a class='media-action' href='#' data-provide='tooltip' title='Edit'><i class='ti-pencil'></i></a><a class='media-action hover-danger' onclick='myFunction("+refID[i]+")' data-provide='tooltip' title='Delete'><i class='ti-close'></i></a></div>";
-										}
-										document.getElementById('content').innerHTML = content;
+				<script>
+					$(document).ready(function() {
+						var content = '<table class="table table-striped table-bordered table-responsive-sm" cellspacing="0" data-provide="datatables"><thead><tr><th>NIK</th><th>Nama</th></tr></thead>';
+						var i;
+						firebase.auth().onAuthStateChanged(function(user) {
+							if (user) {
+								db.collection('user')
+								.orderBy('nama', 'asc')
+								.onSnapshot(function(querySnapshot) {
+									var userNIK = [];
+									var userName = [];
+									var refID = [];
+									querySnapshot.forEach(function(doc) {
+										userNIK.push(doc.data().nik);
+										userName.push(doc.data().nama);
+										refID.push(doc.ref.id);
 									});
-								}
-							});
+									for (i = 0; i < userName.length; i++) {
+										content += '<tr><td>' +  userNIK[i] + '</td><td>' +  userName[i] + '</td></tr>';
+									}
+									content += "</table>"
+									document.getElementById('content').innerHTML = content;
+								});
+							}
 						});
+					});
 
-						function myFunction(x) {
-							console.log(x);
-						}
-					</script>
+					function myFunction(x) {
+						console.log(x);
+					}
+				</script>
 
-					<div id="content"></div>
-
-				</div>
+				<div id="content"></div>
 			</div>
 		</div>
 	</div>

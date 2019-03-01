@@ -106,41 +106,6 @@ $auth = $firebase->getAuth();
         </li>
 
 
-
-        <li class="menu-divider"></li>
-
-        <li class="menu-item">
-          <a class="menu-link" href="#">
-            <span class="icon fa fa-question-circle"></span>
-            <span class="title">Help</span>
-            <span class="arrow"></span>
-          </a>
-
-          <ul class="menu-submenu">
-            <li class="menu-item">
-              <a class="menu-link" href="help/articles.html">
-                <span class="dot"></span>
-                <span class="title">Articles</span>
-              </a>
-            </li>
-
-            <li class="menu-item">
-              <a class="menu-link" href="help/faq.html">
-                <span class="dot"></span>
-                <span class="title">FAQ</span>
-              </a>
-            </li>
-
-            <li class="menu-item">
-              <a class="menu-link" href="help/changelog.html">
-                <span class="dot"></span>
-                <span class="title">Changelog</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-
       </ul>
     </nav>
 
@@ -152,10 +117,10 @@ $auth = $firebase->getAuth();
     <div class="topbar-left">
       <span class="topbar-btn sidebar-toggler"><i>&#9776;</i></span>
 
-      <a class="topbar-btn d-none d-md-block" href="#" data-provide="fullscreen tooltip" title="Fullscreen">
+      <!-- <a class="topbar-btn d-none d-md-block" href="#" data-provide="fullscreen tooltip" title="Fullscreen">
         <i class="material-icons fullscreen-default">fullscreen</i>
         <i class="material-icons fullscreen-active">fullscreen_exit</i>
-      </a>
+      </a> -->
 
       <div class="dropdown d-none d-md-block">
         <span class="topbar-btn" data-toggle="dropdown"><i class="ti-layout-grid3-alt"></i></span>
@@ -164,56 +129,54 @@ $auth = $firebase->getAuth();
             <span data-i8-icon="home"></span>
             <span class="title">Dashboard</span>
           </a>
-          <a class="dropdown-item" href="page/gallery.html">
+          <a class="dropdown-item" href="#">
             <span data-i8-icon="stack_of_photos"></span>
             <span class="title">Gallery</span>
           </a>
-          <a class="dropdown-item" href="page/search.html">
+          <a class="dropdown-item" href="#">
             <span data-i8-icon="search"></span>
             <span class="title">Search</span>
           </a>
-          <a class="dropdown-item" href="page-app/calendar.html">
+          <a class="dropdown-item" href="#">
             <span data-i8-icon="calendar"></span>
             <span class="title">Calendar</span>
           </a>
-          <a class="dropdown-item" href="page-app/chat.html">
+          <a class="dropdown-item" href="#">
             <span data-i8-icon="sms"></span>
             <span class="title">Chat</span>
           </a>
-          <a class="dropdown-item" href="page-app/mailbox.html">
+          <a class="dropdown-item" href="#">
             <span data-i8-icon="invite"></span>
             <span class="title">Emails</span>
           </a>
-          <a class="dropdown-item" href="page-app/users.html">
+          <a class="dropdown-item" href="#">
             <span data-i8-icon="contacts"></span>
             <span class="title">Contacts</span>
           </a>
-          <a class="dropdown-item" href="widget/chart.html">
+          <a class="dropdown-item" href="#">
             <span data-i8-icon="bar_chart"></span>
             <span class="title">Charts</span>
           </a>
-          <a class="dropdown-item" href="page/profile.html">
+          <a class="dropdown-item" href="#">
             <span data-i8-icon="businessman"></span>
             <span class="title">Profile</span>
           </a>
         </div>
       </div>
 
-      <div class="topbar-divider d-none d-md-block"></div>
-
+      <!-- <div class="topbar-divider d-none d-md-block"></div>
+      
       <div class="lookup d-none d-md-block topbar-search" id="theadmin-search">
         <input class="form-control w-300px" type="text">
         <div class="lookup-placeholder">
           <i class="ti-search"></i>
           <span data-provide="typing" data-type="&lt;strong&gt;Type&lt;/strong&gt; Button|&lt;strong&gt;Type&lt;/strong&gt; Slider|&lt;strong&gt;Type&lt;/strong&gt; Layout|&lt;strong&gt;Type&lt;/strong&gt; Modal|&lt;strong&gt;Try&lt;/strong&gt; typing any keyword..." data-loop="false" data-type-speed="90" data-back-speed="50" data-show-cursor="false"></span>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="topbar-right">
-      <a class="topbar-btn" href="#qv-global" data-toggle="quickview"><i class="ti-align-right"></i></a>
-
-      <div class="topbar-divider"></div>
+      
 
       <ul class="topbar-btns">
         <li class="dropdown">
@@ -235,10 +198,10 @@ $auth = $firebase->getAuth();
         </li>
 
         <!-- Notifications -->
-        <li class="dropdown d-none d-md-block">
+        <!-- <li class="dropdown d-none d-md-block">
           <span class="topbar-btn has-new" data-toggle="dropdown"><i class="ti-bell"></i></span>
           <div class="dropdown-menu dropdown-menu-right">
-
+        
             <div class="media-list media-list-hover media-list-divided media-list-xs">
               <a class="media media-new" href="#">
                 <span class="avatar bg-success"><i class="ti-user"></i></span>
@@ -247,7 +210,7 @@ $auth = $firebase->getAuth();
                   <time datetime="2018-07-14 20:00">Just now</time>
                 </div>
               </a>
-
+        
               <a class="media" href="#">
                 <span class="avatar bg-info"><i class="ti-shopping-cart"></i></span>
                 <div class="media-body">
@@ -255,7 +218,7 @@ $auth = $firebase->getAuth();
                   <time datetime="2018-07-14 20:00">2 min ago</time>
                 </div>
               </a>
-
+        
               <a class="media" href="#">
                 <span class="avatar bg-warning"><i class="ti-face-sad"></i></span>
                 <div class="media-body">
@@ -263,7 +226,7 @@ $auth = $firebase->getAuth();
                   <time datetime="2018-07-14 20:00">24 min ago</time>
                 </div>
               </a>
-
+        
               <a class="media" href="#">
                 <span class="avatar bg-primary"><i class="ti-money"></i></span>
                 <div class="media-body">
@@ -272,107 +235,107 @@ $auth = $firebase->getAuth();
                 </div>
               </a>
             </div>
-
+        
             <div class="dropdown-footer">
               <div class="left">
                 <a href="#">Read all notifications</a>
               </div>
-
+        
               <div class="right">
                 <a href="#" data-provide="tooltip" title="Mark all as read"><i class="fa fa-circle-o"></i></a>
                 <a href="#" data-provide="tooltip" title="Update"><i class="fa fa-repeat"></i></a>
                 <a href="#" data-provide="tooltip" title="Settings"><i class="fa fa-gear"></i></a>
               </div>
             </div>
-
+        
           </div>
-        </li>
+        </li> -->
         <!-- END Notifications -->
 
         <!-- Messages -->
-        <li class="dropdown d-none d-md-block">
+        <!-- <li class="dropdown d-none d-md-block">
           <span class="topbar-btn" data-toggle="dropdown"><i class="ti-email"></i></span>
           <div class="dropdown-menu dropdown-menu-right">
-
+        
             <div class="media-list media-list-divided media-list-hover media-list-xs scrollable" style="height: 290px">
               <a class="media media-new1" href="page-app/mailbox-single.html">
                 <span class="avatar status-success">
                   <img src="../assets/img/avatar/1.jpg" alt="...">
                 </span>
-
+        
                 <div class="media-body">
                   <p><strong>Maryam Amiri</strong> <time class="float-right" datetime="2018-07-14 20:00">23 min ago</time></p>
                   <p class="text-truncate">Authoritatively exploit resource maximizing technologies before technically.</p>
                 </div>
               </a>
-
+        
               <a class="media media-new1" href="page-app/mailbox-single.html">
                 <span class="avatar status-warning">
                   <img src="../assets/img/avatar/2.jpg" alt="...">
                 </span>
-
+        
                 <div class="media-body">
                   <p><strong>Hossein Shams</strong> <time class="float-right" datetime="2018-07-14 20:00">48 min ago</time></p>
                   <p class="text-truncate">Continually plagiarize efficient interfaces after bricks-and-clicks niches.</p>
                 </div>
               </a>
-
+        
               <a class="media" href="page-app/mailbox-single.html">
                 <span class="avatar status-dark">
                   <img src="../assets/img/avatar/3.jpg" alt="...">
                 </span>
-
+        
                 <div class="media-body">
                   <p><strong>Helen Bennett</strong> <time class="float-right" datetime="2018-07-14 20:00">3 hours ago</time></p>
                   <p class="text-truncate">Objectively underwhelm cross-unit web-readiness before sticky outsourcing.</p>
                 </div>
               </a>
-
+        
               <a class="media" href="page-app/mailbox-single.html">
                 <span class="avatar status-success bg-purple">FT</span>
-
+        
                 <div class="media-body">
                   <p><strong>Fidel Tonn</strong> <time class="float-right" datetime="2018-07-14 20:00">21 hours ago</time></p>
                   <p class="text-truncate">Interactively innovate transparent relationships with holistic infrastructures.</p>
                 </div>
               </a>
-
+        
               <a class="media" href="page-app/mailbox-single.html">
                 <span class="avatar status-danger">
                   <img src="../assets/img/avatar/4.jpg" alt="...">
                 </span>
-
+        
                 <div class="media-body">
                   <p><strong>Freddie Arends</strong> <time class="float-right" datetime="2018-07-14 20:00">Yesterday</time></p>
                   <p class="text-truncate">Collaboratively visualize corporate initiatives for web-enabled value.</p>
                 </div>
               </a>
-
+        
               <a class="media" href="page-app/mailbox-single.html">
                 <span class="avatar status-success">
                   <img src="../assets/img/avatar/5.jpg" alt="...">
                 </span>
-
+        
                 <div class="media-body">
                   <p><strong>Freddie Arends</strong> <time class="float-right" datetime="2018-07-14 20:00">Yesterday</time></p>
                   <p class="text-truncate">Interactively reinvent standards compliant supply chains through next-generation bandwidth.</p>
                 </div>
               </a>
             </div>
-
+        
             <div class="dropdown-footer">
               <div class="left">
                 <a href="#">Read all messages</a>
               </div>
-
+        
               <div class="right">
                 <a href="#" data-provide="tooltip" title="Mark all as read"><i class="fa fa-circle-o"></i></a>
                 <a href="#" data-provide="tooltip" title="Settings"><i class="fa fa-gear"></i></a>
               </div>
             </div>
-
+        
           </div>
-        </li>
+        </li> -->
         <!-- END Messages -->
 
       </ul>

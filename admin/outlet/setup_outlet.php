@@ -20,7 +20,7 @@
 </script>
 
 <div class="row">
-	<div class="col-lg-6">
+	<div class="col-lg-12">
 		<div class="card">
 			<h5 class="card-title"><strong>New Outlet</strong></h5>
 
@@ -65,16 +65,15 @@
 		</div>
 	</div>
 
-	<div class="col-md-6">
+	<div class="col-md-12">
 		<div class="card card-bordered">
 			<h4 class="card-title"><strong>Outlet Data</strong></h4>
-
-			<div class="media-list media-list-hover" data-provide="selectall">
-				<div class="media-list-body scrollable" data-provide="sortable" data-sortable-handle=".sortable-dot" style="height:344px">
-
+			<!-- <div class="media-list media-list-hover" data-provide="selectall">
+				<div class="media-list-body scrollable" data-provide="sortable" data-sortable-handle=".sortable-dot" style="height:344px"> -->
+				<div class="card-body">
 					<script>
 						$(document).ready(function() {
-							var content = '';
+							var content = '<table class="table table-striped table-bordered table-responsive-sm" cellspacing="0" data-provide="datatables"><thead><tr><th>Name</th><th>Alamat</th></tr></thead>';
 							var i;
 							firebase.auth().onAuthStateChanged(function(user) {
 								if (user) {
@@ -82,14 +81,21 @@
 									.orderBy('nama_outlet', 'asc')
 									.onSnapshot(function(querySnapshot) {
 										var outletName = [];
+										var outletAlamat = [];
 										var refID = [];
-										querySnapshot.forEach(function(doc) {
+										querySnapshot.forEach(function(doc) { 
 											outletName.push(doc.data().nama_outlet);
+											outletAlamat.push(doc.data().alamat);
 											refID.push(doc.ref.id);
 										});
 										for (i = 0; i < outletName.length; i++) {
-											content += "<div class='media media-single'><div class='custom-control custom-control-lg flex-grow-1'><label>" + outletName[i] + "</label></div><a class='media-action' href='#' data-provide='tooltip' title='Edit'><i class='ti-pencil'></i></a><a class='media-action hover-danger' onclick='myFunction("+refID[i]+")' data-provide='tooltip' title='Delete'><i class='ti-close'></i></a></div>";
+											/*content += "<div class='media media-single'><div class='custom-control custom-control-lg flex-grow-1'><label>" + outletName[i] + "</label></div><a class='media-action' href='#' data-provide='tooltip' title='Edit'><i class='ti-pencil'></i></a><a class='media-action hover-danger' onclick='myFunction("+refID[i]+")' data-provide='tooltip' title='Delete'><i class='ti-close'></i></a></div>";*/
+												content += '<tr><td>' +  outletName[i] + '</td><td>' +  outletAlamat[i] + '</td></tr>';
+											
+
+											// $('#content').append(content);
 										}
+										content += "</table>"
 										document.getElementById('content').innerHTML = content;
 									});
 								}
@@ -102,9 +108,9 @@
 					</script>
 
 					<div id="content"></div>
-
 				</div>
-			</div>
+				<!-- </div>
+							</div> -->
 		</div>
 	</div>
 </div>
