@@ -92,10 +92,27 @@ $auth = $firebase->getAuth();
         </li>
 
         <li class="menu-item">
-          <a class="menu-link" href="?page=misteriguest">
-            <span class="icon fa fa-gear"></span>
+          <a class="menu-link" href="#">
+            <span class="icon fa fa-tv"></span>
             <span class="title">Mystery Guest</span>
+            <span class="arrow"></span>
           </a>
+
+          <ul class="menu-submenu">
+            <li class="menu-item">
+              <a class="menu-link" href="?page=misteriguest">
+                <span class="dot"></span>
+                <span class="title">Setup Question</span>
+              </a>
+            </li>
+
+            <li class="menu-item">
+              <a class="menu-link" href="?page=datamg">
+                <span class="dot"></span>
+                <span class="title">Data Question</span>
+              </a>
+            </li>
+          </ul>
         </li>
 
         <li class="menu-item">
@@ -350,25 +367,29 @@ $auth = $firebase->getAuth();
 
     <div class="main-content">
       <?php 
-      $current_page = isset($_GET['page']) ? $_GET['page'] : null;
+        $current_page = isset($_GET['page']) ? $_GET['page'] : null;
 
-      switch ($current_page) {
-        case 'misteriguest':
-        include 'misteri_shopper/setup_mg.php';
-        break;
+        switch ($current_page) {
+          case 'misteriguest':
+          include 'misteri_shopper/setup_mg.php';
+          break;
 
-        case 'outlet':
-        include 'outlet/setup_outlet.php';
-        break;
+          case 'datamg':
+          include 'misteri_shopper/data_mg.php';
+          break;
 
-        case 'users':
-        include 'user/setup_user.php';
-        break;
+          case 'outlet':
+          include 'outlet/setup_outlet.php';
+          break;
 
-        case 'dashboard':
-        default:
-        include 'dashboard.php';
-      }
+          case 'users':
+          include 'user/setup_user.php';
+          break;
+
+          case 'dashboard':
+          default:
+          include 'dashboard.php';
+        }
       ?>
 
     </div><!--/.main-content -->

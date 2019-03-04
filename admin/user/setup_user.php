@@ -133,6 +133,17 @@
 
 <script>
 	$(document).ready(function() {
+		const outletList = document.querySelector('#outlet-list');
+
+		function renderOutlet(doc) {
+
+		}
+
+		db.collection('user').get().then((snapshot) => {
+			snapshot.docs.forEach(doc => {
+				renderOutlet(doc);
+			})
+		})
 		firebase.auth().onAuthStateChanged(function (user) {
 			if (user) {
 				$('#save').click(function() {
