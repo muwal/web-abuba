@@ -67,14 +67,14 @@
 												});
 												no = 1;
 												text += '<dl class="row">';
-												text +=	'<dt class="col-md-4">Pertanyaan</dt>';
+												text +=	'<dt class="col-md-4">Bobot Parameter</dt>';
 												text += '<dd class="col-md-8">' + ParameterPertanyaanGreeting +'%</dd>';
 												text += '</dl>';
 												for (i = 0; i < pertanyaan[0].length; i++) {
 													var str = jawaban[0][i];
 													var res = str.split("!@#$");
-
-													resArray.push(res)
+													
+													// resArray.push(res)
 
 													text += '<h6 class="text-uppercase">Pertanyaan ' +  no++ + '</h6>';
 													text += '<dl class="row">';
@@ -83,13 +83,22 @@
 
 													text +=	'<dt class="col-md-4">Bobot Pertanyaan</dt>';
 													text += '<dd class="col-md-8">' + bobotPertanyaan[0][i] + '</dd>';
-													
-													for (a = 0; a < resArray[0].length; a++) {
-														text +=	'<dt class="col-md-4">Alasan</dt>';
-														text += '<dd class="col-md-8">' + resArray[0][a] + '</dd>';
-														
+
+													let element = null;
+													noalasan = 0;
+													for (a = 0; a < res.length; a++) {
+														element = res[a];
+														if (element == "null") {
+															element = '-';
+														}else{
+															element = res[a];
+														}
+														text +=	'<dt class="col-md-4">Alasan ' + noalasan++ + '</dt>';
+														text += '<dd class="col-md-8">' + element + '</dd>';
 													}
-													console.log(resArray)
+
+													
+													
 													text += '</dl>';
 
 													if (i < pertanyaan[0].length - 1) {
@@ -120,7 +129,7 @@
 												});
 												no = 1;
 												text += '<dl class="row">';
-												text +=	'<dt class="col-md-4">Pertanyaan</dt>';
+												text +=	'<dt class="col-md-4">Bobot Parameter</dt>';
 												text += '<dd class="col-md-8">' + ParameterPertanyaanSeating +'%</dd>';
 												text += '</dl>';
 												for (i = 0; i < pertanyaanSeating[0].length; i++) {
@@ -134,8 +143,19 @@
 													text +=	'<dt class="col-md-4">Bobot Pertanyaan</dt>';
 													text += '<dd class="col-md-8">' + bobotPertanyaanSeating[0][i] + '</dd>';
 
-													text +=	'<dt class="col-md-4">Alasan</dt>';
-													text += '<dd class="col-md-8">' + resSeating + '</dd>';
+													let a;
+													noalasan = 0;
+													for (a = 0; a < resSeating.length; a++) {
+														element = resSeating[a];
+														if (element == "null") {
+															element = '-';
+														}else{
+															element = resSeating[a];
+														}
+														text +=	'<dt class="col-md-4">Alasan ' + noalasan++ + '</dt>';
+														text += '<dd class="col-md-8">' + element + '</dd>';
+													}
+
 													text += '</dl>';
 
 													if (i < pertanyaanSeating[0].length - 1) {
@@ -166,7 +186,7 @@
 												});
 												no = 1;
 												text += '<dl class="row">';
-												text +=	'<dt class="col-md-4">Pertanyaan</dt>';
+												text +=	'<dt class="col-md-4">Bobot Parameter</dt>';
 												text += '<dd class="col-md-8">' + ParameterPertanyaanTakingOrder +'%</dd>';
 												text += '</dl>';
 												for (i = 0; i < pertanyaanTakingOrder[0].length; i++) {
@@ -180,8 +200,19 @@
 													text +=	'<dt class="col-md-4">Bobot Pertanyaan</dt>';
 													text += '<dd class="col-md-8">' + bobotPertanyaanTakingOrder[0][i] + '</dd>';
 
-													text +=	'<dt class="col-md-4">Alasan</dt>';
-													text += '<dd class="col-md-8">' + resTakingOrder + '</dd>';
+													let a;
+													noalasan = 0;
+													for (a = 0; a < resTakingOrder.length; a++) {
+														element = resTakingOrder[a];
+														if (element == "null") {
+															element = '-';
+														}else{
+															element = resTakingOrder[a];
+														}
+														text +=	'<dt class="col-md-4">Alasan ' + noalasan++ + '</dt>';
+														text += '<dd class="col-md-8">' + element + '</dd>';
+													}
+
 													text += '</dl>';
 
 													if (i < pertanyaanTakingOrder[0].length - 1) {
@@ -212,7 +243,7 @@
 												});
 												no = 1;
 												text += '<dl class="row">';
-												text +=	'<dt class="col-md-4">Pertanyaan</dt>';
+												text +=	'<dt class="col-md-4">Bobot Parameter</dt>';
 												text += '<dd class="col-md-8">' + ParameterPertanyaanServingProduct +'%</dd>';
 												text += '</dl>';
 												for (i = 0; i < pertanyaanServingProduct[0].length; i++) {
@@ -226,8 +257,21 @@
 													text +=	'<dt class="col-md-4">Bobot Pertanyaan</dt>';
 													text += '<dd class="col-md-8">' + bobotPertanyaanServingProduct[0][i] + '</dd>';
 
-													text +=	'<dt class="col-md-4">Alasan</dt>';
-													text += '<dd class="col-md-8">' + resServingProduct + '</dd>';
+													let a;
+													noalasan = 0;
+													for (a = 0; a < resServingProduct.length; a++) {
+														element = resServingProduct[a];
+
+														if (element == "null") {
+															element = '-';
+														}else{
+															element = resServingProduct[a];
+														}
+
+														text +=	'<dt class="col-md-4">Alasan ' + noalasan++ + '</dt>';
+														text += '<dd class="col-md-8">' + element + '</dd>';
+													}
+
 													text += '</dl>';
 
 													if (i < pertanyaanServingProduct[0].length - 1) {
@@ -267,7 +311,90 @@
 					</div>
 
 					<div class="tab-pane fade" id="complaint">
-						
+						<div class="card-body row" id="content-complaint">
+							<script>
+								$(document).ready(function() {
+									firebase.auth().onAuthStateChanged(function(user) {
+										if (user) {
+
+											db.collection('complaint_handling')
+											.onSnapshot(function(querySnapshot) {
+												let text = '';
+												let i;
+												var parameterPertanyaanComplaint = [];
+												var kategoriComplaint = [];
+												var bobotPertanyaanComplaint = [];
+												var pertanyaanComplaint = [];
+												var jawabanComplaint = [];
+
+												querySnapshot.forEach(function(doc) {
+													parameterPertanyaanComplaint.push(doc.data().bobot);
+													kategoriComplaint.push(doc.data().category);
+													bobotPertanyaanComplaint.push(doc.data().bobot_pertanyaan);
+													pertanyaanComplaint.push(doc.data().pertanyaan);
+													jawabanComplaint.push(doc.data().jawaban);
+												});
+												
+												let c;
+												text += '<div class="col-md-12"><h5 class="text-uppercase">Complaint</h5></div>'
+												for (c = 0; c < parameterPertanyaanComplaint.length; c++) {
+												text += '<div class="col-md-6">'
+													no = 1;
+													text += '<dl class="row">';
+													text +=	'<dt class="col-md-4">Category</dt>';
+													text += '<dd class="col-md-8">' + kategoriComplaint[c] +'</dd>';
+													text +=	'<dt class="col-md-4">Bobot Parameter </dt>';
+													text += '<dd class="col-md-8">' + parameterPertanyaanComplaint[c] +'%</dd>';
+													text += '</dl>';
+													for (i = 0; i < pertanyaanComplaint[c].length; i++) {
+														var strComplaint = jawabanComplaint[c][i];
+														var resComplaint = strComplaint.split("!@#$");
+														text += '<h6 class="text-uppercase">Pertanyaan ' +  no++ + '</h6>';
+														text += '<dl class="row">';
+														text +=	'<dt class="col-md-4">Pertanyaan</dt>';
+														text += '<dd class="col-md-8">' + pertanyaanComplaint[c][i] + '</dd>';
+
+														text +=	'<dt class="col-md-4">Bobot Pertanyaan</dt>';
+														text += '<dd class="col-md-8">' + bobotPertanyaanComplaint[c][i] + '</dd>';
+
+														let a;
+														noalasan = 0;
+														for (a = 0; a < resComplaint.length; a++) {
+															element = resComplaint[a];
+															if (element == "null") {
+																element = '-';
+															}else{
+																element = resComplaint[a];
+															}
+															text +=	'<dt class="col-md-4">Alasan ' + noalasan++ + '</dt>';
+															text += '<dd class="col-md-8">' + element + '</dd>';
+														}
+
+														text += '</dl>';
+
+														if (i < pertanyaanComplaint[0].length - 1) {
+															text += '';
+															text += '<hr class="hr-sm">';
+														} else {
+															text += '<hr>';
+														}
+
+														document.getElementById('content-complaint').innerHTML = text;
+													}
+												text += '</div>'
+												}
+											});
+											
+										}
+									});
+								});
+
+								function myFunction(x) {
+									console.log(x);
+								}
+							</script>
+							
+						</div>
 					</div>
 
 					<div class="tab-pane fade" id="payment">
@@ -294,7 +421,7 @@
 												});
 												no = 1;
 												text += '<dl class="row">';
-												text +=	'<dt class="col-md-4">Pertanyaan</dt>';
+												text +=	'<dt class="col-md-4">Bobot Parameter</dt>';
 												text += '<dd class="col-md-8">' + ParameterPertanyaanBilling +'%</dd>';
 												text += '</dl>';
 												for (i = 0; i < pertanyaanBilling[0].length; i++) {
@@ -308,8 +435,19 @@
 													text +=	'<dt class="col-md-4">Bobot Pertanyaan</dt>';
 													text += '<dd class="col-md-8">' + bobotPertanyaanBilling[0][i] + '</dd>';
 
-													text +=	'<dt class="col-md-4">Alasan</dt>';
-													text += '<dd class="col-md-8">' + resBilling + '</dd>';
+													let a;
+													noalasan = 0;
+													for (a = 0; a < resBilling.length; a++) {
+														element = resBilling[a];
+														if (element == "null") {
+															element = '-';
+														}else{
+															element = resBilling[a];
+														}
+														text +=	'<dt class="col-md-4">Alasan ' + noalasan++ + '</dt>';
+														text += '<dd class="col-md-8">' + element + '</dd>';
+													}
+
 													text += '</dl>';
 
 													if (i < pertanyaanBilling[0].length - 1) {
@@ -340,7 +478,7 @@
 												});
 												no = 1;
 												text += '<dl class="row">';
-												text +=	'<dt class="col-md-4">Pertanyaan</dt>';
+												text +=	'<dt class="col-md-4">Bobot Parameter</dt>';
 												text += '<dd class="col-md-8">' + ParameterPertanyaanthanking +'%</dd>';
 												text += '</dl>';
 												for (i = 0; i < pertanyaanthanking[0].length; i++) {
@@ -354,8 +492,19 @@
 													text +=	'<dt class="col-md-4">Bobot Pertanyaan</dt>';
 													text += '<dd class="col-md-8">' + bobotPertanyaanthanking[0][i] + '</dd>';
 
-													text +=	'<dt class="col-md-4">Alasan</dt>';
-													text += '<dd class="col-md-8">' + resthanking + '</dd>';
+													let a;
+													noalasan = 0;
+													for (a = 0; a < resthanking.length; a++) {
+														element = resthanking[a];
+														if (element == "null") {
+															element = '-';
+														}else{
+															element = resthanking[a];
+														}
+														text +=	'<dt class="col-md-4">Alasan ' + noalasan++ + '</dt>';
+														text += '<dd class="col-md-8">' + element + '</dd>';
+													}
+
 													text += '</dl>';
 
 													if (i < pertanyaanthanking[0].length - 1) {
@@ -412,7 +561,7 @@
 												});
 												no = 1;
 												text += '<dl class="row">';
-												text +=	'<dt class="col-md-4">Pertanyaan</dt>';
+												text +=	'<dt class="col-md-4">Bobot Parameter</dt>';
 												text += '<dd class="col-md-8">' + ParameterPertanyaancleanliness +'%</dd>';
 												text += '</dl>';
 												for (i = 0; i < pertanyaancleanliness[0].length; i++) {
@@ -426,8 +575,19 @@
 													text +=	'<dt class="col-md-4">Bobot Pertanyaan</dt>';
 													text += '<dd class="col-md-8">' + bobotPertanyaancleanliness[0][i] + '</dd>';
 
-													text +=	'<dt class="col-md-4">Alasan</dt>';
-													text += '<dd class="col-md-8">' + rescleanliness + '</dd>';
+													let a;
+													noalasan = 0;
+													for (a = 0; a < rescleanliness.length; a++) {
+														element = rescleanliness[a];
+														if (element == "null") {
+															element = '-';
+														}else{
+															element = rescleanliness[a];
+														}
+														text +=	'<dt class="col-md-4">Alasan ' + noalasan++ + '</dt>';
+														text += '<dd class="col-md-8">' + element + '</dd>';
+													}
+
 													text += '</dl>';
 
 													if (i < pertanyaancleanliness[0].length - 1) {
@@ -458,7 +618,7 @@
 												});
 												no = 1;
 												text += '<dl class="row">';
-												text +=	'<dt class="col-md-4">Pertanyaan</dt>';
+												text +=	'<dt class="col-md-4">Bobot Parameter</dt>';
 												text += '<dd class="col-md-8">' + ParameterPertanyaanprebushing +'%</dd>';
 												text += '</dl>';
 												for (i = 0; i < pertanyaanprebushing[0].length; i++) {
@@ -472,8 +632,18 @@
 													text +=	'<dt class="col-md-4">Bobot Pertanyaan</dt>';
 													text += '<dd class="col-md-8">' + bobotPertanyaanprebushing[0][i] + '</dd>';
 
-													text +=	'<dt class="col-md-4">Alasan</dt>';
-													text += '<dd class="col-md-8">' + resprebushing + '</dd>';
+													let a;
+													noalasan = 0;
+													for (a = 0; a < resprebushing.length; a++) {
+														element = resprebushing[a];
+														if (element == "null") {
+															element = '-';
+														}else{
+															element = resprebushing[a];
+														}
+														text +=	'<dt class="col-md-4">Alasan ' + noalasan++ + '</dt>';
+														text += '<dd class="col-md-8">' + element + '</dd>';
+													}
 													text += '</dl>';
 
 													if (i < pertanyaanprebushing[0].length - 1) {
@@ -504,7 +674,7 @@
 												});
 												no = 1;
 												text += '<dl class="row">';
-												text +=	'<dt class="col-md-4">Pertanyaan</dt>';
+												text +=	'<dt class="col-md-4">Bobot Parameter</dt>';
 												text += '<dd class="col-md-8">' + ParameterPertanyaanparking +'%</dd>';
 												text += '</dl>';
 												for (i = 0; i < pertanyaanparking[0].length; i++) {
@@ -518,8 +688,19 @@
 													text +=	'<dt class="col-md-4">Bobot Pertanyaan</dt>';
 													text += '<dd class="col-md-8">' + bobotPertanyaanparking[0][i] + '</dd>';
 
-													text +=	'<dt class="col-md-4">Alasan</dt>';
-													text += '<dd class="col-md-8">' + resparking + '</dd>';
+													let a;
+													noalasan = 0;
+													for (a = 0; a < resparking.length; a++) {
+														element = resparking[a];
+														if (element == "null") {
+															element = '-';
+														}else{
+															element = resparking[a];
+														}
+														text +=	'<dt class="col-md-4">Alasan ' + noalasan++ + '</dt>';
+														text += '<dd class="col-md-8">' + element + '</dd>';
+													}
+
 													text += '</dl>';
 
 													if (i < pertanyaanparking[0].length - 1) {
