@@ -18,107 +18,212 @@
 
 	var db = firebase.firestore(app);
 </script>
+<style type="text/css" media="screen">
+#edit-outlet {
+	display: none
+}
+</style>
+<div class="main-content">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<h5 class="card-title new"><strong>New Outlet</strong></h5>
 
-<div class="row">
-	<div class="col-lg-12">
-		<div class="card">
-			<h5 class="card-title"><strong>New Outlet</strong></h5>
+				<div id="edit-outlet">
+					<form id="new_entry">
 
-			
-			<form id="new_entry">
+						<div class="card-body row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label>Outlet Name</label>
+									<input type="hidden" id="edit-outletid">
+									<input type="text" id="outlet-edit" class="form-control input-reason" placeholder="eg. Abuba Jakarta" autocomplete="off" required="">
+								</div>
 
-				<div class="card-body row">
-					<div class="col-md-12">
-						<div class="form-group">
-							<label>Outlet Name</label>
-							<input type="text" id="outlet" class="form-control input-reason" placeholder="eg. Abuba Jakarta" autocomplete="off" required="">
+								<div class="form-group">
+									<label>Search Key</label>
+									<input type="text" id="searchKey-edit" class="form-control input-reason" maxlength="1" placeholder="eg. A, J" autocomplete="off" required="">
+								</div>
+
+								<div class="form-group">
+									<label>Address</label>
+									<textarea id="alamat-edit" class="form-control input-reason" autocomplete="off" required=""></textarea>
+								</div>
+
+								<div class="form-group">
+									<label>No. Telp</label>
+									<input type="text" id="noTelp-edit" class="form-control input-reason" placeholder="" autocomplete="off" required="">
+								</div>
+
+								<div class="form-group">
+									<label>Outlet Image</label>
+									<input type="text" id="image-edit" class="form-control input-reason" value="assets/images/slide2.png" placeholder="Outlet Image" autocomplete="off" required="">
+								</div>
+							</div>
 						</div>
-
-						<div class="form-group">
-							<label>Search Key</label>
-							<input type="text" id="searchKey" class="form-control input-reason" maxlength="1" placeholder="eg. A, J" autocomplete="off" required="">
+						<div class="card-footer">
+							<div class="flexbox float-right mb-2">
+								<button id="editbutton" type="button" class="btn btn-primary ">SAVE</button>
+								<button id="cancelbutton" type="button" class="btn btn-danger ">CANCEL</button>
+							</div>
 						</div>
-
-						<div class="form-group">
-							<label>Address</label>
-							<textarea id="alamat" class="form-control input-reason" autocomplete="off" required=""></textarea>
-						</div>
-
-						<div class="form-group">
-							<label>No. Telp</label>
-							<input type="text" id="noTelp" class="form-control input-reason" placeholder="" autocomplete="off" required="">
-						</div>
-
-						<div class="form-group">
-							<label>Outlet Image</label>
-							<input type="text" id="image" class="form-control input-reason" value="assets/images/slide2.png" placeholder="Outlet Image" autocomplete="off" required="">
-						</div>
-					</div>
+					</form>
 				</div>
-				<div class="card-footer">
-					<div class="flexbox float-right mb-2">
-						<button id="save" type="button" class="btn btn-primary ">ADD</button>
-					</div>
+
+				
+				<div id="create-outlet">
+					<form id="new_entry">
+
+						<div class="card-body row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label>Outlet Name</label>
+									<input type="text" id="outlet" class="form-control input-reason" placeholder="eg. Abuba Jakarta" autocomplete="off" required="">
+								</div>
+
+								<div class="form-group">
+									<label>Search Key</label>
+									<input type="text" id="searchKey" class="form-control input-reason" maxlength="1" placeholder="eg. A, J" autocomplete="off" required="">
+								</div>
+
+								<div class="form-group">
+									<label>Address</label>
+									<textarea id="alamat" class="form-control input-reason" autocomplete="off" required=""></textarea>
+								</div>
+
+								<div class="form-group">
+									<label>No. Telp</label>
+									<input type="text" id="noTelp" class="form-control input-reason" placeholder="" autocomplete="off" required="">
+								</div>
+
+								<div class="form-group">
+									<label>Outlet Image</label>
+									<input type="text" id="image" class="form-control input-reason" value="assets/images/slide2.png" placeholder="Outlet Image" autocomplete="off" required="">
+								</div>
+							</div>
+						</div>
+						<div class="card-footer">
+							<div class="flexbox float-right mb-2">
+								<button id="save" type="button" class="btn btn-primary ">ADD</button>
+							</div>
+						</div>
+					</form>
 				</div>
-			</form>
-			
+				
+			</div>
 		</div>
-	</div>
 
-	<div class="col-md-12">
-		<div class="card card-bordered">
-			<h4 class="card-title"><strong>Outlet Data</strong></h4>
+		<div class="col-md-12">
+			<div class="card card-bordered">
+				<h4 class="card-title"><strong>Outlet Data</strong></h4>
 			<!-- <div class="media-list media-list-hover" data-provide="selectall">
 				<div class="media-list-body scrollable" data-provide="sortable" data-sortable-handle=".sortable-dot" style="height:344px"> -->
-				<div class="card-body">
-					<script>
-						$(document).ready(function() {
-							var content = '<table class="table table-striped table-bordered table-responsive-sm" cellspacing="0" data-provide="datatables"><thead><tr><th>Name</th><th>Alamat</th></tr></thead>';
-							var i;
-							firebase.auth().onAuthStateChanged(function(user) {
-								if (user) {
-									db.collection('outlet')
-									.orderBy('nama_outlet', 'asc')
-									.onSnapshot(function(querySnapshot) {
-										var outletName = [];
-										var outletAlamat = [];
-										var refID = [];
-										querySnapshot.forEach(function(doc) { 
-											outletName.push(doc.data().nama_outlet);
-											outletAlamat.push(doc.data().alamat);
-											refID.push(doc.ref.id);
-										});
-										for (i = 0; i < outletName.length; i++) {
-											/*content += "<div class='media media-single'><div class='custom-control custom-control-lg flex-grow-1'><label>" + outletName[i] + "</label></div><a class='media-action' href='#' data-provide='tooltip' title='Edit'><i class='ti-pencil'></i></a><a class='media-action hover-danger' onclick='myFunction("+refID[i]+")' data-provide='tooltip' title='Delete'><i class='ti-close'></i></a></div>";*/
-												content += '<tr><td>' +  outletName[i] + '</td><td>' +  outletAlamat[i] + '</td></tr>';
-											
+					<div class="card-body">
+						<script>
+							$(document).ready(function() {
+								var content = '<table class="table table-striped table-bordered table-responsive-sm" cellspacing="0" data-provide="datatables"><thead><tr><th>#</th><th>Name</th><th>Alamat</th><th>Action</th></tr></thead><tbody>';
+								var i;
+								firebase.auth().onAuthStateChanged(function(user) {
+									if (user) {
+										db.collection('outlet')
+										.orderBy('nama_outlet', 'asc')
+										.onSnapshot(function(querySnapshot) {
+											var outletName = [];
+											var outletAlamat = [];
+											var refID = [];
+											querySnapshot.forEach(function(doc) { 
+												outletName.push(doc.data().nama_outlet);
+												outletAlamat.push(doc.data().alamat);
+												refID.push(doc.ref.id);
+											});
+											no = 1;
+											for (i = 0; i < outletName.length; i++) {
+												/*content += "<div class='media media-single'><div class='custom-control custom-control-lg flex-grow-1'><label>" + outletName[i] + "</label></div><a class='media-action' href='#' data-provide='tooltip' title='Edit'><i class='ti-pencil'></i></a><a class='media-action hover-danger' onclick='myFunction("+refID[i]+")' data-provide='tooltip' title='Delete'><i class='ti-close'></i></a></div>";*/
+												content += '<tr><th scope="row">'+no+++'</th><td>' +  outletName[i] + '</td><td>' +  outletAlamat[i] + '</td><td class="text-right table-actions"><a class="table-action hover-primary" href="#" onclick="editFunction(\'' +refID[i]+ '\')"><i class="ti-pencil"></i></a><a class="table-action hover-danger" href="#" onclick="deleteFunction(\'' +refID[i]+ '\')"><i class="ti-trash"></i></a></td></tr>';
+												
 
 											// $('#content').append(content);
-										}
-										content += "</table>"
-										document.getElementById('content').innerHTML = content;
+											}
+											content += "</tbody></table>"
+											document.getElementById('content').innerHTML = content;
+										});
+									}
+								});
+							});
+
+							function editFunction (id) {
+								var id = id;
+								document.getElementById('create-outlet').style.display = "none";
+								document.getElementById('edit-outlet').style.display = "block";
+								$('.card-title.new strong').text('Edit Outlet');
+
+								var docRef = db.collection("outlet").doc(id);
+								docRef.get().then(function(doc) {
+									if (doc.exists) {
+										document.getElementById('edit-outletid').value = id;
+										document.getElementById('outlet-edit').value = doc.data().nama_outlet;
+										document.getElementById('searchKey-edit').value = doc.data().searchKey;
+										document.getElementById('alamat-edit').value = doc.data().alamat;
+										document.getElementById('noTelp-edit').value = doc.data().telp;
+									} else {
+
+										console.log("No such document!");
+									}
+								}).catch(function(error) {
+									console.log("Error getting document:", error);
+								});
+							}
+
+							function deleteFunction (idDelete) {
+								var idDelete = idDelete;
+
+								var confirmBtn = confirm('Are you sure want to delete?');
+
+								if (confirmBtn) {
+									db.collection("outlet").doc(idDelete).delete().then(function() {
+										console.log("Document successfully deleted!");
+										window.location.href = '?page=outlet';
+									}).catch(function(error) {
+										console.error("Error removing document: ", error);
 									});
 								}
-							});
-						});
+							}
+						</script>
 
-						function myFunction(x) {
-							console.log(x);
-						}
-					</script>
-
-					<div id="content"></div>
-				</div>
+						<div id="content"></div>
+					</div>
 				<!-- </div>
-							</div> -->
+				</div> -->
+			</div>
 		</div>
 	</div>
 </div>
-
 <script>
 	$(document).ready(function() {
 		firebase.auth().onAuthStateChanged(function (user) {
 			if (user) {
+				$('#cancelbutton').click(function() {
+					document.getElementById('create-outlet').style.display = "block";
+					document.getElementById('edit-outlet').style.display = "none";
+					$('.card-title.new strong').text('New Users');
+
+					$('#edit-outletid').val('');
+				})
+
+				$('#editbutton').click(function() {
+					db.collection('outlet').doc($('#edit-outletid').val()).update({
+						alamat: $('#alamat-edit').val(),
+						nama_outlet: $('#outlet-edit').val(),
+						searchKey: $('#searchKey-edit').val(),
+						telp: $('#noTelp-edit').val(),
+					}).then(function(docRef) {
+						console.log('Success ');
+						window.location.href = '?page=outlet';
+					}).catch(function(error) {
+						console.log('Error adding document: ', error);
+					});
+				})
+
 				$('#save').click(function() {
 
 		  			// get maxid outlet from dumper_outlet

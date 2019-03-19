@@ -1,6 +1,7 @@
 <?php  
   // $user = $auth->getUserInfo('5CzFuLaSrxUHHgKFsUJhtgz8Kxn2');
 ?>
+<div class="main-content">
 <div class="row">
   <div class="col-md-4">
     <div class="card card-body">
@@ -504,4 +505,5 @@
 
     </div>
   </div>
+</div>
 </div>

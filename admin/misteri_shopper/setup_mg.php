@@ -586,7 +586,7 @@
 		/*END*/
 	});
 </script>
-
+<div class="main-content">
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card">
@@ -1195,7 +1195,7 @@
 											/*console.log(pertanyaan_complaint);
 											console.log(jawaban_real_complaint);*/
 
-											/*db.collection('complaint_handling1').add({
+											/*db.collection('complaint_handling').add({
 												bobot: $('.parameter-complaint').val(),
 												bobotpertanyaan: bobot_complaint,
 												jawaban: jawaban_real_complaint,
@@ -1824,7 +1824,7 @@
 														})
 
 													/*SERVING*/
-													db.collection('servingTime1').add({
+													db.collection('servingTime').add({
 														drinks: $('.drinks-serving').val(),
 														juice: $('.juice-serving').val(),
 														appetizer: $('.appetizer-serving').val(),
@@ -1836,7 +1836,7 @@
 														console.log('Error adding document: ', error);
 													});
 
-													db.collection('greeting1').add({
+													db.collection('greeting').add({
 														bobot: $('.parameter-greeting').val(),
 														bobotpertanyaan: bobot_greeting,
 														jawaban: jawaban_real_greeting,
@@ -1847,7 +1847,7 @@
 														console.log('Error adding document: ', error);
 													});
 
-													db.collection('seating1').add({
+													db.collection('seating').add({
 														bobot: $('.parameter-seating').val(),
 														bobotpertanyaan: bobot_seating,
 														jawaban: jawaban_real_seating,
@@ -1858,7 +1858,7 @@
 														console.log('Error adding document: ', error);
 													});
 
-													db.collection('takingOrder1').add({
+													db.collection('takingOrder').add({
 														bobot: $('.parameter-takingorder').val(),
 														bobotpertanyaan: bobot_takingorder,
 														jawaban: jawaban_real_takingorder,
@@ -1869,7 +1869,7 @@
 														console.log('Error adding document: ', error);
 													});
 
-													db.collection('servingProduct1').add({
+													db.collection('servingProduct').add({
 														bobot: $('.parameter-servingproduct').val(),
 														bobotpertanyaan: bobot_servingproduct,
 														jawaban: jawaban_real_servingproduct,
@@ -1882,7 +1882,7 @@
 													/*END SERVING*/
 
 													/*PAYMENT*/
-													db.collection('billing1').add({
+													db.collection('billing').add({
 														bobot: $('.parameter-billing').val(),
 														bobotpertanyaan: bobot_billing,
 														jawaban: jawaban_real_billing,
@@ -1893,7 +1893,7 @@
 														console.log('Error adding document: ', error);
 													});
 
-													db.collection('thanking1').add({
+													db.collection('thanking').add({
 														bobot: $('.parameter-thanking').val(),
 														bobotpertanyaan: bobot_thanking,
 														jawaban: jawaban_real_thanking,
@@ -1905,7 +1905,7 @@
 													});
 													/*END PAYMENT*/
 
-													db.collection('cleaniness1').add({
+													db.collection('cleaniness').add({
 														bobot: $('.parameter-cleanliness').val(),
 														bobotpertanyaan: bobot_cleanliness,
 														jawaban: jawaban_real_cleanliness,
@@ -1916,7 +1916,7 @@
 														console.log('Error adding document: ', error);
 													});
 
-													db.collection('pre-bushing1').add({
+													db.collection('pre-bushing').add({
 														bobot: $('.parameter-prebushing').val(),
 														bobotpertanyaan: bobot_prebushing,
 														jawaban: jawaban_real_prebushing,
@@ -1927,7 +1927,7 @@
 														console.log('Error adding document: ', error);
 													});
 
-													db.collection('parking1').add({
+													db.collection('parking').add({
 														bobot: $('.parameter-parking').val(),
 														bobotpertanyaan: bobot_parking,
 														jawaban: jawaban_real_parking,
@@ -1970,4 +1970,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>

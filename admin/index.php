@@ -365,7 +365,7 @@ $auth = $firebase->getAuth();
   <!-- Main container -->
   <main class="main-container">
 
-    <div class="main-content">
+    
       <?php 
         $current_page = isset($_GET['page']) ? $_GET['page'] : null;
 
@@ -386,13 +386,17 @@ $auth = $firebase->getAuth();
           include 'user/setup_user.php';
           break;
 
+          case 'privacy_policy':
+          include 'privacy_policy.html';
+          break;
+
           case 'dashboard':
           default:
           include 'dashboard.php';
         }
       ?>
 
-    </div><!--/.main-content -->
+    <!--/.main-content -->
 
 
     <!-- Footer -->
@@ -405,13 +409,7 @@ $auth = $firebase->getAuth();
         <div class="col-md-6">
           <ul class="nav nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
             <li class="nav-item">
-              <a class="nav-link" href="help/articles.html">Documentation</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="help/faq.html">FAQ</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://themeforest.net/item/theadmin-responsive-bootstrap-4-admin-dashboard-webapp-template/20475359?license=regular&amp;open_purchase_for_item_id=20475359&amp;purchasable=source&amp;ref=thethemeio">Purchase Now</a>
+              <a class="nav-link" href="?page=privacy_policy">FAQ</a>
             </li>
           </ul>
         </div>
