@@ -91,6 +91,18 @@
 		display: none
 	}
 
+	.input-categorycomplaint {
+		display: none
+	}
+
+	.input-questioncomplaint {
+		display: none
+	}
+
+	.input-pointcomplaint {
+		display: none
+	}
+
 	.card-footer {
 		display: none
 	}
@@ -416,6 +428,13 @@
 											$('.input-questionparking').css('display', 'block');
 											$('.input-pointparking').css('display', 'block');
 
+											$('.text_pertanyaancomplaint').css('display', 'none');
+											$('.text_categorycomplaint').css('display', 'none');
+											$('.text_pointcomplaint').css('display', 'none');
+											$('.input-questioncomplaint').css('display', 'block');
+											$('.input-categorycomplaint').css('display', 'block');
+											$('.input-pointcomplaint').css('display', 'block');
+
 											$('.card-title strong').text('Edit Question');
 											$('.card-footer').css('display', 'block')
 										})
@@ -459,6 +478,11 @@
 											/* parking */
 											var pertanyaan_parking = [];
 											var jawaban_real_parking = [];
+
+											/* complaint */
+											var pertanyaan_complaint = [];
+											var jawaban_real_complaint = [];
+											var id_real_complaint = [];
 
 											$('.questionGreeting').each(function() {
 												var question_greeting = $(this).find('.input-questionGreeting').val()
@@ -693,8 +717,8 @@
 													console.log('Error adding document: ', error);
 												});
 
-												console.log(jawaban_real_cleanliness)
-												console.log(pertanyaan_cleanliness)
+												/*console.log(jawaban_real_cleanliness)
+												console.log(pertanyaan_cleanliness)*/
 											})
 
 											$('.questionprebushing').each(function() {
@@ -727,8 +751,8 @@
 													console.log('Error adding document: ', error);
 												});
 
-												console.log(jawaban_real_prebushing)
-												console.log(pertanyaan_prebushing)
+												/*console.log(jawaban_real_prebushing)
+												console.log(pertanyaan_prebushing)*/
 											})
 
 											$('.questionparking').each(function() {
@@ -761,8 +785,43 @@
 													console.log('Error adding document: ', error);
 												});
 
-												console.log(jawaban_real_parking)
-												console.log(pertanyaan_parking)
+												/*console.log(jawaban_real_parking)
+												console.log(pertanyaan_parking)*/
+											})
+
+											$('.questioncomplaint').each(function() {
+												
+												var id_complaint = $(this).find('#edit-outletcomplaint').val()
+												var question_complaint = $(this).find('.input-questioncomplaint').val()
+												var category_complaint = $(this).find('.input-categorycomplaint').val()
+												var points_complaint = [];
+
+												
+												$(this).find('.input-pointcomplaint').each(function(){
+													var pointcomplaint = $(this).val()
+													if ($(this).val() == '') {
+														points_complaint.push('null')
+													} else {
+														points_complaint.push(pointcomplaint)
+													}
+												})
+
+												
+												id_real_complaint.push(id_complaint)
+												pertanyaan_complaint.push(question_complaint)
+												jawaban_real_complaint.push(points_complaint.join('!@#$'))
+
+												db.collection('complaint_handling').doc(id_complaint).update({
+													pertanyaan: pertanyaan_complaint,
+													category: category_complaint,
+													jawaban: jawaban_real_complaint,
+												}).then(function(docRef) {
+													console.log('Success ');
+												}).catch(function(error) {
+													console.log('Error adding document: ', error);
+												});
+
+												// console.log(id_complaint)
 											})
 										});
 
@@ -812,12 +871,30 @@
 											$('.input-questionparking').css('display', 'none');
 											$('.input-pointparking').css('display', 'none');
 
+											$('.text_pertanyaancomplaint').css('display', 'block');
+											$('.text_categorycomplaint').css('display', 'block');
+											$('.text_pointcomplaint').css('display', 'block');
+											$('.input-questioncomplaint').css('display', 'none');
+											$('.input-categorycomplaint').css('display', 'none');
+											$('.input-pointcomplaint').css('display', 'none');
+
 											$('.card-title strong').text('Data Question');
 											$('.card-footer').css('display', 'none')
+
+											$("html, body").animate({ scrollTop: 0 }, "slow");
+											return false;
 										})
 
 										$('#next-serving').click(function() {
 											$('[href="#complaint"]').tab('show');
+										})
+
+										$('#next-complaint').click(function() {
+											$('[href="#payment"]').tab('show');
+										})
+
+										$('#next-payment').click(function() {
+											$('[href="#review-outlet"]').tab('show');
 										})
 									});
 								});
@@ -861,6 +938,7 @@
 												var bobotPertanyaanComplaint = [];
 												var pertanyaanComplaint = [];
 												var jawabanComplaint = [];
+												var refIDcomplaint = [];
 
 												querySnapshot.forEach(function(doc) {
 													parameterPertanyaanComplaint.push(doc.data().bobot);
@@ -868,16 +946,17 @@
 													bobotPertanyaanComplaint.push(doc.data().bobot_pertanyaan);
 													pertanyaanComplaint.push(doc.data().pertanyaan);
 													jawabanComplaint.push(doc.data().jawaban);
+													refIDcomplaint.push(doc.ref.id);
 												});
 												
 												let c;
 												text += '<div class="col-md-12"><h5 class="text-uppercase">Complaint</h5></div>'
 												for (c = 0; c < parameterPertanyaanComplaint.length; c++) {
-												text += '<div class="col-md-6">'
+												text += '<div class="col-md-6"><div class="questioncomplaint">'
 													no = 1;
 													text += '<dl class="row">';
-													text +=	'<dt class="col-md-4">Category</dt>';
-													text += '<dd class="col-md-8">' + kategoriComplaint[c] +'</dd>';
+													text +=	'<dt class="col-md-4">Category<input type="hidden" id="edit-outletcomplaint" value="'+refIDcomplaint[c]+'"></dt>';
+													text += '<dd class="col-md-8"><span class="text_categorycomplaint">' + kategoriComplaint[c] +'</span><input type="text" name="" value="'+kategoriComplaint[c]+'"  class="input-categorycomplaint form-control input-sm" placeholder=""></dd>';
 													text +=	'<dt class="col-md-4">Bobot Parameter </dt>';
 													text += '<dd class="col-md-8">' + parameterPertanyaanComplaint[c] +'%</dd>';
 													text += '</dl>';
@@ -887,7 +966,7 @@
 														text += '<h6 class="text-uppercase">Pertanyaan ' +  no++ + '</h6>';
 														text += '<dl class="row">';
 														text +=	'<dt class="col-md-4">Pertanyaan</dt>';
-														text += '<dd class="col-md-8">' + pertanyaanComplaint[c][i] + '</dd>';
+														text += '<dd class="col-md-8"><span class="text_pertanyaancomplaint">' + pertanyaanComplaint[c][i] + '</span><input type="text" name="" value="'+pertanyaanComplaint[c][i]+'"  class="input-questioncomplaint form-control input-sm" placeholder=""></dd>';
 
 														text +=	'<dt class="col-md-4">Bobot Pertanyaan</dt>';
 														text += '<dd class="col-md-8">' + bobotPertanyaanComplaint[c][i] + '</dd>';
@@ -902,7 +981,7 @@
 																element = resComplaint[a];
 															}
 															text +=	'<dt class="col-md-4">Alasan ' + noalasan++ + '</dt>';
-															text += '<dd class="col-md-8">' + element + '</dd>';
+															text += '<dd class="col-md-8"><span class="text_pointcomplaint">' + element + '</span><input type="text" name="" value="'+element+'" class="input-pointcomplaint form-control input-sm" placeholder=""></dd>';
 														}
 
 														text += '</dl>';
@@ -916,7 +995,7 @@
 
 														document.getElementById('content-complaint').innerHTML = text;
 													}
-												text += '</div>'
+												text += '</div></div>'
 												}
 											});
 											
@@ -927,6 +1006,11 @@
 								
 							</script>
 							
+						</div>
+						<div class="card-footer">
+							<div class="flexbox pull-right">
+								<button class="btn btn-secondary" type="button" id="next-complaint">Next</button> 
+							</div>
 						</div>
 					</div>
 
@@ -1068,6 +1152,11 @@
 
 							<div class="col-md-6"><h5 class="text-uppercase">Thanking</h5>
 								<div id="content-thanking"></div>
+							</div>
+						</div>
+						<div class="card-footer">
+							<div class="flexbox pull-right">
+								<button class="btn btn-secondary" type="button" id="next-payment">Next</button> 
 							</div>
 						</div>
 					</div>
